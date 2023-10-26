@@ -1,6 +1,7 @@
 package com.example.mvvm_condosa.ui.home.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,6 +14,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Card
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -29,13 +31,21 @@ import androidx.compose.ui.unit.sp
 import com.example.mvvm_condosa.R
 import com.example.mvvm_condosa.data.AchievementSource
 import com.example.mvvm_condosa.model.Achievement
+import com.example.mvvm_condosa.ui.theme.DarkColors
+import com.example.mvvm_condosa.ui.theme.LightColors
 
 @Preview(showBackground = true)
 @Composable
 fun AchievementCard(modifier: Modifier = Modifier) {
+    val colorScheme = if (isSystemInDarkTheme()) {
+        DarkColors
+    } else {
+        LightColors
+    }
+
     val gradient = Brush.linearGradient(
-        0.0f to Color(0xFF4B7DCE),
-        1000.0f to Color(0xFF0C3577),
+        0.0f to colorScheme.primary,
+        1000.0f to colorScheme.primaryContainer,
         start = Offset.Zero,
         end = Offset.Infinite
     )
@@ -60,13 +70,13 @@ fun AchievementCard(modifier: Modifier = Modifier) {
                             text = "58",
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            color = Color.White,
+                            color = LocalContentColor.current,
                             modifier = modifier.padding(top = 8.dp)
                         )
                         Text(
                             text = "Condominios",
                             fontSize = 14.sp,
-                            color = Color.White,
+                            color = LocalContentColor.current,
                             modifier = modifier.padding(bottom = 8.dp)
                         )
                     }
@@ -85,13 +95,13 @@ fun AchievementCard(modifier: Modifier = Modifier) {
                             text = "49",
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            color = Color.White,
+                            color = LocalContentColor.current,
                             modifier = modifier.padding(top = 8.dp)
                         )
                         Text(
                             text = "Condominios",
                             fontSize = 14.sp,
-                            color = Color.White,
+                            color = LocalContentColor.current,
                             modifier = modifier.padding(bottom = 8.dp)
                         )
                     }
@@ -116,13 +126,13 @@ fun AchievementCard(modifier: Modifier = Modifier) {
                             text = "26",
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            color = Color.White,
+                            color = LocalContentColor.current,
                             modifier = modifier.padding(top = 8.dp)
                         )
                         Text(
                             text = "Condominios",
                             fontSize = 14.sp,
-                            color = Color.White,
+                            color = LocalContentColor.current,
                             modifier = modifier.padding(bottom = 8.dp)
                         )
                     }
@@ -141,13 +151,13 @@ fun AchievementCard(modifier: Modifier = Modifier) {
                             text = "34",
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            color = Color.White,
+                            color = LocalContentColor.current,
                             modifier = modifier.padding(top = 8.dp)
                         )
                         Text(
                             text = "Condominios",
                             fontSize = 14.sp,
-                            color = Color.White,
+                            color = LocalContentColor.current,
                             modifier = modifier.padding(bottom = 8.dp)
                         )
                     }

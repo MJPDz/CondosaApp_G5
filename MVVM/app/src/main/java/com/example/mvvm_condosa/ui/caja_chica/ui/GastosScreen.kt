@@ -5,6 +5,7 @@ import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,6 +22,7 @@ import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -41,13 +43,21 @@ import androidx.compose.ui.unit.sp
 import com.example.mvvm_condosa.R
 import com.example.mvvm_condosa.data.GastosCasaSource.gastosCasa
 import com.example.mvvm_condosa.model.GastosCasa
+import com.example.mvvm_condosa.ui.theme.DarkColors
+import com.example.mvvm_condosa.ui.theme.LightColors
 
 @Preview
 @Composable
 fun GastosScreen() {
+    val colorScheme = if (isSystemInDarkTheme()) {
+        DarkColors
+    } else {
+        LightColors
+    }
+
     val gradient = Brush.linearGradient(
-        0.0f to Color(0xFF0052D6),
-        1000.0f to Color(0xFF00183F),
+        0.0f to colorScheme.primary,
+        1000.0f to colorScheme.primaryContainer,
         start = Offset.Zero,
         end = Offset.Infinite
     )
@@ -93,13 +103,13 @@ fun InfoGastoTotal() {
         Text(
             text = "Gasto Total:",
             fontSize = 16.sp,
-            color = Color.White
+            color = LocalContentColor.current
         )
         Text(
             text = "S/ ${consumido}.00",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
-            color = Color(0xFFD1C484),
+            color = LocalContentColor.current,
             modifier = Modifier.align(Alignment.Bottom)
         )
     }
@@ -109,7 +119,7 @@ fun InfoGastoTotal() {
 fun HeaderTitle_GastosCasa() {
     Text(
         text = "Gastos de caja chica",
-        color = Color.White,
+        color = LocalContentColor.current,
         fontSize = 40.sp,
         fontWeight = FontWeight.Bold,
         textAlign = TextAlign.Center,
@@ -130,9 +140,15 @@ fun ListaGastos_Casa() {
 
 @Composable
 fun ListGastosRow(item: GastosCasa) {
+    val colorScheme = if (isSystemInDarkTheme()) {
+        DarkColors
+    } else {
+        LightColors
+    }
+
     val gradient = Brush.linearGradient(
-        0.0f to Color(0xFF4B7DCE),
-        1000.0f to Color(0xFF001941),
+        0.0f to colorScheme.primary,
+        1000.0f to colorScheme.primaryContainer,
         start = Offset.Zero,
         end = Offset.Infinite
     )
@@ -169,17 +185,17 @@ fun ListGastosRow(item: GastosCasa) {
                             text = item.fecha,
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
-                            color = Color.White
+                            color = LocalContentColor.current
                         )
                         Text(
                             text = item.nombre,
                             fontSize = 16.sp,
-                            color = Color.White
+                            color = LocalContentColor.current
                         )
                         Text(
                             text = item.producto,
                             fontSize = 16.sp,
-                            color = Color(0xFFD1C484)
+                            color = LocalContentColor.current
                         )
                     }
                     Column(
@@ -195,7 +211,7 @@ fun ListGastosRow(item: GastosCasa) {
                             text = "S/ ${item.monto}.00",
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Bold,
-                            color = Color(0xFFD1C484)
+                            color = LocalContentColor.current
                         )
                     }
                 }
@@ -222,7 +238,7 @@ private fun GastoItemButton(
         Icon(
             imageVector = if (expanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
             contentDescription = "Boton Expandir",
-            tint = Color(0xFFACACAC)
+            tint = LocalContentColor.current
         )
     }
 }
@@ -238,11 +254,11 @@ fun GastoItemExtend() {
     Text(
         text = "Mas info",
         fontSize = 16.sp,
-        color = Color.White
+        color = LocalContentColor.current
     )
     Text(
         text = "Mas info",
         fontSize = 16.sp,
-        color = Color(0xFFD1C484)
+        color = LocalContentColor.current
     )
 }

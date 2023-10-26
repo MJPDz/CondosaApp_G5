@@ -2,6 +2,7 @@ package com.example.mvvm_condosa.ui.home.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,6 +16,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -30,12 +32,20 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.mvvm_condosa.R
 import com.example.mvvm_condosa.ui.navigation.AppScreens
+import com.example.mvvm_condosa.ui.theme.DarkColors
+import com.example.mvvm_condosa.ui.theme.LightColors
 
 @Composable
 fun HomeScreen(navController: NavController) {
+    val colorScheme = if (isSystemInDarkTheme()) {
+        DarkColors
+    } else {
+        LightColors
+    }
+
     val gradient = Brush.linearGradient(
-        0.0f to Color(0xFF0052D6),
-        1000.0f to Color(0xFF00183F),
+        0.0f to colorScheme.primary,
+        1000.0f to colorScheme.primaryContainer,
         start = Offset.Zero,
         end = Offset.Infinite
     )
@@ -82,7 +92,7 @@ fun HeaderHome() {
     ) {
         Text(
             text = "Condosa",
-            color = Color.White,
+            color = LocalContentColor.current,
             fontSize = 40.sp,
             modifier = Modifier.align(CenterVertically),
             fontWeight = FontWeight.Bold
@@ -101,20 +111,20 @@ fun DescriptionHome() {
     ) {
         Text(
             text = "15+ Años de Excelencia en Condominios para Tu Comodidad y Seguridad Inigualables.",
-            color = Color(0xFFACACAC),
+            color = LocalContentColor.current,
             fontSize = 20.sp
         )
         Spacer(modifier = Modifier.padding(8.dp))
         Text(
             text = "Tu Hogar, Nuestra Pasión",
-            color = Color.White,
+            color = LocalContentColor.current,
             fontSize = 30.sp,
             lineHeight = 36.sp
         )
         Spacer(modifier = Modifier.padding(8.dp))
         Text(
             text = "¡Descubre la Diferencia Ahora!",
-            color = Color(0xFFF1710E),
+            color = LocalContentColor.current,
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold
         )
@@ -133,12 +143,12 @@ fun ButtonCotiza() {
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp),
-        colors = ButtonDefaults.buttonColors(Color(0xFF00183F))
+        colors = ButtonDefaults.buttonColors(LocalContentColor.current)
     ) {
         Text(
             text = "¡Cotiza nuestro servicio!",
             fontSize = 20.sp,
-            color = Color.White
+            color = LocalContentColor.current
         )
     }
 }
@@ -147,7 +157,7 @@ fun ButtonCotiza() {
 fun GraphicHome() {
     Text(
         text = "Gráfico estadistico...",
-        color = Color(0xFFACACAC),
+        color = LocalContentColor.current,
         fontSize = 20.sp
     )
 }
@@ -156,7 +166,7 @@ fun GraphicHome() {
 fun TitleOptionsHome() {
     Text(
         text = "Opciones de Administrador",
-        color = Color(0xFFD1C484),
+        color = LocalContentColor.current,
         fontSize = 20.sp
     )
 }
@@ -168,12 +178,12 @@ fun OptionsHome(navController: NavController) {
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp),
-        colors = ButtonDefaults.buttonColors(Color(0xFF00183F))
+        colors = ButtonDefaults.buttonColors(LocalContentColor.current)
     ) {
         Text(
             text = "Opción 1",
             fontSize = 20.sp,
-            color = Color.White
+            color = LocalContentColor.current
         )
     }
     Spacer(modifier = Modifier.padding(8.dp))
@@ -182,12 +192,12 @@ fun OptionsHome(navController: NavController) {
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp),
-        colors = ButtonDefaults.buttonColors(Color(0xFF00183F))
+        colors = ButtonDefaults.buttonColors(LocalContentColor.current)
     ) {
         Text(
             text = "Opción 2",
             fontSize = 20.sp,
-            color = Color.White
+            color = LocalContentColor.current
         )
     }
     Spacer(modifier = Modifier.padding(8.dp))
@@ -196,12 +206,12 @@ fun OptionsHome(navController: NavController) {
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp),
-        colors = ButtonDefaults.buttonColors(Color(0xFF00183F))
+        colors = ButtonDefaults.buttonColors(LocalContentColor.current)
     ) {
         Text(
             text = "Revisión de caja chica",
             fontSize = 20.sp,
-            color = Color.White
+            color = LocalContentColor.current
         )
     }
     Spacer(modifier = Modifier.padding(8.dp))
@@ -210,12 +220,12 @@ fun OptionsHome(navController: NavController) {
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp),
-        colors = ButtonDefaults.buttonColors(Color(0xFF00183F))
+        colors = ButtonDefaults.buttonColors(LocalContentColor.current)
     ) {
         Text(
             text = "Opción 4",
             fontSize = 20.sp,
-            color = Color.White
+            color = LocalContentColor.current
         )
     }
 }
@@ -233,7 +243,7 @@ fun FooterHome() {
         Text(
             text ="Condominios S.A. © 2023",
             fontSize = 10.sp,
-            color = Color.White
+            color = LocalContentColor.current
         )
     }
 }

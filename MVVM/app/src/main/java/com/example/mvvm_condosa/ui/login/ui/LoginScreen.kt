@@ -1,8 +1,11 @@
 package com.example.mvvm_condosa.ui.login.ui
 
+import com.example.mvvm_condosa.ui.theme.LightColors
+import com.example.mvvm_condosa.ui.theme.DarkColors
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,6 +17,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -33,27 +38,40 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.navigation.NavController
 import com.example.mvvm_condosa.ui.navigation.AppScreens
+import com.example.mvvm_condosa.ui.theme.MVVM_CondosaTheme
 
 @Composable
 fun LoginScreen(navController: NavController) {
+    val colorScheme = if (isSystemInDarkTheme()) {
+        DarkColors
+    } else {
+        LightColors
+    }
+
     val gradient = Brush.linearGradient(
-        0.0f to Color(0xFF0052D6),
-        1000.0f to Color(0xFF00183F),
+        0.0f to colorScheme.primary,
+        1000.0f to colorScheme.primaryContainer,
         start = Offset.Zero,
         end = Offset.Infinite
     )
+
     Box(
         modifier = Modifier
             .background(gradient)
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(dimensionResource(id = R.dimen.padding_medium))
     ) {
-        Login( Modifier.align(Alignment.Center), navController)
+        MVVM_CondosaTheme(darkTheme = isSystemInDarkTheme()) {
+            Login(Modifier.align(Alignment.Center), navController)
+        }
     }
 }
+
 
 @Composable
 fun Login(modifier: Modifier, navController: NavController) {
@@ -61,15 +79,15 @@ fun Login(modifier: Modifier, navController: NavController) {
         modifier = Modifier
     ) {
         HeaderImage(Modifier.align(Alignment.CenterHorizontally))
-        Spacer(modifier = Modifier.padding(8.dp))
+        Spacer(modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_small)))
         HeaderText()
-        Spacer(modifier = Modifier.padding(16.dp))
+        Spacer(modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium)))
         EmailField()
-        Spacer(modifier = Modifier.padding(16.dp))
+        Spacer(modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium)))
         PasswordField()
-        Spacer(modifier = Modifier.padding(8.dp))
+        Spacer(modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_small)))
         ForgotPassword(Modifier.align(Alignment.End))
-        Spacer(modifier = Modifier.padding(16.dp))
+        Spacer(modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium)))
         LoginButton(navController)
     }
 }
@@ -83,15 +101,14 @@ fun HeaderText() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Condosa",
-            fontSize = 50.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color.White
+            text = stringResource(id = R.string.Condosa),
+            style = MaterialTheme.typography.displayLarge,
+            color = LocalContentColor.current
         )
         Text(
-            text = "¡ Administración de condominios !",
+            text = stringResource(id = R.string.Adm),
             fontSize = 30.sp,
-            color = Color(0xFFACACAC),
+            color = LocalContentColor.current.copy(alpha = 0.7f),
             textAlign = TextAlign.Center
         )
     }
@@ -103,10 +120,10 @@ fun LoginButton(navController: NavController) {
         onClick = { navController.navigate(route = AppScreens.HomeScreen.route) },
         modifier = Modifier
             .fillMaxWidth()
-            .height(48.dp),
-        colors = ButtonDefaults.buttonColors(Color(0xFF00183F))
+            .padding(dimensionResource(id = R.dimen.padding_botton)),
+        colors = ButtonDefaults.buttonColors(LocalContentColor.current)
     ) {
-        Text(text = "Iniciar Sesión", fontSize = 20.sp, color = Color.White)
+        Text(text = "Iniciar Sesión", fontSize = 20.sp, color = LocalContentColor.current)
     }
 }
 
@@ -117,7 +134,7 @@ fun ForgotPassword(modifier: Modifier) {
         modifier = modifier.clickable {  },
         fontSize = 15.sp,
         fontWeight = FontWeight.Bold,
-        color = Color(0xFFF1710E)
+        color = LocalContentColor.current
     )
 }
 

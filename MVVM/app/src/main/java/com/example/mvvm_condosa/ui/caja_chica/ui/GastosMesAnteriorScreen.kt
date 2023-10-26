@@ -1,6 +1,7 @@
 package com.example.mvvm_condosa.ui.caja_chica.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -28,13 +30,21 @@ import androidx.compose.ui.unit.sp
 import com.example.mvvm_condosa.R
 import com.example.mvvm_condosa.data.GastosMesAnteriorSource.gastosMesAnterior
 import com.example.mvvm_condosa.model.GastosMesAnterior
+import com.example.mvvm_condosa.ui.theme.DarkColors
+import com.example.mvvm_condosa.ui.theme.LightColors
 
 @Preview
 @Composable
 fun GastosMesAnteriorScreen() {
+    val colorScheme = if (isSystemInDarkTheme()) {
+        DarkColors
+    } else {
+        LightColors
+    }
+
     val gradient = Brush.linearGradient(
-        0.0f to Color(0xFF0052D6),
-        1000.0f to Color(0xFF00183F),
+        0.0f to colorScheme.primary,
+        1000.0f to colorScheme.primaryContainer,
         start = Offset.Zero,
         end = Offset.Infinite
     )
@@ -70,7 +80,7 @@ fun GastosMesAnterior() {
 fun HeaderTitle_MesAnterior() {
     Text(
         text = "Gastos del mes anterior",
-        color = Color.White,
+        color = LocalContentColor.current,
         fontSize = 40.sp,
         fontWeight = FontWeight.Bold,
         textAlign = TextAlign.Center,
@@ -96,19 +106,19 @@ fun InfoCajaChica() {
                 Text(
                     text = "Gasto Total",
                     fontSize = 16.sp,
-                    color = Color.White
+                    color = LocalContentColor.current
                 )
                 Text(
                     text = "del mes anterior:",
                     fontSize = 16.sp,
-                    color = Color.White
+                    color = LocalContentColor.current
                 )
             }
             Text(
                 text = "S/ ${gastoTotal}.00",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFFD1C484),
+                color = LocalContentColor.current,
                 modifier = Modifier.align(Alignment.Bottom)
             )
         }
@@ -122,19 +132,19 @@ fun InfoCajaChica() {
                 Text(
                     text = "Caja chica",
                     fontSize = 16.sp,
-                    color = Color.White
+                    color = LocalContentColor.current
                 )
                 Text(
                     text = "asignada:",
                     fontSize = 16.sp,
-                    color = Color.White
+                    color = LocalContentColor.current
                 )
             }
             Text(
                 text = "S/ ${cajaChica}.00",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFFD1C484),
+                color = LocalContentColor.current,
                 modifier = Modifier.align(Alignment.Bottom)
             )
         }
@@ -154,9 +164,15 @@ fun ListaGastos_MesAnterior() {
 
 @Composable
 fun ListItemRow(item: GastosMesAnterior) {
+    val colorScheme = if (isSystemInDarkTheme()) {
+        DarkColors
+    } else {
+        LightColors
+    }
+
     val gradient = Brush.linearGradient(
-        0.0f to Color(0xFF4B7DCE),
-        1000.0f to Color(0xFF001941),
+        0.0f to colorScheme.primary,
+        1000.0f to colorScheme.primaryContainer,
         start = Offset.Zero,
         end = Offset.Infinite
     )
@@ -182,12 +198,12 @@ fun ListItemRow(item: GastosMesAnterior) {
                         text = "Nro: ${item.numero}",
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color.White
+                        color = LocalContentColor.current
                     )
                     Text(
                         text = item.nombre,
                         fontSize = 14.sp,
-                        color = Color.White
+                        color = LocalContentColor.current
                     )
                 }
                 Column {
@@ -195,7 +211,7 @@ fun ListItemRow(item: GastosMesAnterior) {
                         text = "S/ ${item.gasto}.00",
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFFD1C484),
+                        color = LocalContentColor.current,
                     )
                 }
             }

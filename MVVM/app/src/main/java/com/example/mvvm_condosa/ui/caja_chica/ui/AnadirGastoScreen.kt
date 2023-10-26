@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.icu.util.Calendar
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,6 +22,7 @@ import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -43,13 +45,21 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.mvvm_condosa.ui.navigation.AppScreens
+import com.example.mvvm_condosa.ui.theme.DarkColors
+import com.example.mvvm_condosa.ui.theme.LightColors
 
 
 @Composable
 fun AnadirGastosScreen(navController: NavController) {
+    val colorScheme = if (isSystemInDarkTheme()) {
+        DarkColors
+    } else {
+        LightColors
+    }
+
     val gradient = Brush.linearGradient(
-        0.0f to Color(0xFF0052D6),
-        1000.0f to Color(0xFF00183F),
+        0.0f to colorScheme.primary,
+        1000.0f to colorScheme.primaryContainer,
         start = Offset.Zero,
         end = Offset.Infinite
     )
@@ -86,7 +96,7 @@ fun AnadirGastos(navController: NavController) {
 fun HeaderTitle_Anadir() {
     Text(
         text = "Añadir nuevo gasto",
-        color = Color.White,
+        color = LocalContentColor.current,
         fontSize = 40.sp,
         fontWeight = FontWeight.Bold,
         textAlign = TextAlign.Center,
@@ -132,7 +142,7 @@ fun CampoFecha() {
                 label = {
                     Text(
                         text = "Selecciona fecha",
-                        color = Color(0xFFACACAC)
+                        color = LocalContentColor.current
                     )
                 },
                 trailingIcon = {
@@ -140,7 +150,7 @@ fun CampoFecha() {
                         imageVector = Icons.Filled.DateRange,
                         contentDescription = null,
                         modifier = Modifier.clickable { nDatePickerDialog.show() },
-                        tint = Color(0xFFACACAC)
+                        tint = LocalContentColor.current
                     )
                 },
                 modifier = Modifier.fillMaxWidth()
@@ -196,12 +206,12 @@ fun ButtonAnadir(navController: NavController) {
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp),
-        colors = ButtonDefaults.buttonColors(Color(0xFF00183F))
+        colors = ButtonDefaults.buttonColors(LocalContentColor.current)
     ) {
         Text(
             text = "Registrar gasto",
             fontSize = 20.sp,
-            color = Color.White
+            color = LocalContentColor.current
         )
     }
 }

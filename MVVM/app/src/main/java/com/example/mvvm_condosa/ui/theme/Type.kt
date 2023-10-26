@@ -16,6 +16,7 @@ private val poppinsFamily = FontFamily(
     Font(R.font.poppins_bold, weight = FontWeight.Bold),
     Font(R.font.poppins_black, weight = FontWeight.Black),
 )
+/*
 // Set of Material typography styles to start with
 val Typography = Typography(
     bodyLarge = TextStyle(
@@ -24,8 +25,8 @@ val Typography = Typography(
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
-    )
-    /* Other default text styles to override
+    )   --- esta parte de arriba estaba en uso
+     Other default text styles to override
     titleLarge = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Normal,
@@ -40,5 +41,44 @@ val Typography = Typography(
         lineHeight = 16.sp,
         letterSpacing = 0.5.sp
     )
-    */
+
 )
+*/
+
+val AbrilFatface = FontFamily(
+    Font(R.font.abril_fatface_regular)
+)
+
+
+
+val Montserrat = FontFamily(
+    Font(R.font.montserrat_regular),
+    Font(R.font.montserrat_bold, FontWeight.Bold)
+)
+
+val Typography = Typography(
+
+    displayLarge = TextStyle(    //  displayLarge  => mostrar en grande
+        fontFamily = AbrilFatface,
+        fontWeight = FontWeight.Bold,
+        fontSize = 50.sp,
+        letterSpacing = 0.5.sp
+
+    ),
+    displayMedium = TextStyle(    //  displayMedium => monstrar tamaño medio
+        fontFamily = Montserrat,
+        fontWeight = FontWeight.Bold,
+        fontSize = 20.sp
+    ),
+    labelSmall = TextStyle(     // etiqueta pequeña
+        fontFamily = Montserrat,
+        fontWeight = FontWeight.Bold,
+        fontSize = 14.sp
+    ),
+    bodyLarge = TextStyle(   // cuerpo grande
+        fontFamily = Montserrat,
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp
+    )
+)
+

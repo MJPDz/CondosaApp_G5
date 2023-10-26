@@ -1,6 +1,7 @@
 package com.example.mvvm_condosa.ui.caja_chica.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,6 +15,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -29,13 +31,21 @@ import androidx.navigation.NavController
 import com.example.mvvm_condosa.data.GastosCasaSource.gastosCasa
 import com.example.mvvm_condosa.data.GastosMesAnteriorSource.gastosMesAnterior
 import com.example.mvvm_condosa.ui.navigation.AppScreens
+import com.example.mvvm_condosa.ui.theme.DarkColors
+import com.example.mvvm_condosa.ui.theme.LightColors
 
 
 @Composable
 fun RegistroGastosScreen(navController: NavController) {
+    val colorScheme = if (isSystemInDarkTheme()) {
+        DarkColors
+    } else {
+        LightColors
+    }
+
     val gradient = Brush.linearGradient(
-        0.0f to Color(0xFF0052D6),
-        1000.0f to Color(0xFF00183F),
+        0.0f to colorScheme.primary,
+        1000.0f to colorScheme.primaryContainer,
         start = Offset.Zero,
         end = Offset.Infinite
     )
@@ -72,7 +82,7 @@ fun RegistroGastos(navController: NavController) {
 fun HeaderTitle_Registro() {
     Text(
         text = "Registro de Gastos",
-        color = Color.White,
+        color = LocalContentColor.current,
         fontSize = 40.sp,
         fontWeight = FontWeight.Bold,
         textAlign = TextAlign.Center,
@@ -104,19 +114,19 @@ fun InfoRegistros() {
                 Text(
                     text = "Caja chica",
                     fontSize = 16.sp,
-                    color = Color.White
+                    color = LocalContentColor.current
                 )
                 Text(
                     text = "asignada:",
                     fontSize = 16.sp,
-                    color = Color.White
+                    color = LocalContentColor.current
                 )
             }
             Text(
                 text = "S/ ${cajaChica}.00",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFFD1C484),
+                color = LocalContentColor.current,
                 modifier = Modifier.align(Alignment.Bottom)
             )
         }
@@ -129,14 +139,14 @@ fun InfoRegistros() {
             Text(
                 text = "Consumido:",
                 fontSize = 16.sp,
-                color = Color.White,
+                color = LocalContentColor.current,
                 modifier = Modifier.align(Alignment.CenterVertically)
             )
             Text(
                 text = "S/ ${consumido}.00",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFFD1C484),
+                color = LocalContentColor.current,
                 modifier = Modifier.align(Alignment.Bottom)
             )
         }
@@ -149,14 +159,14 @@ fun InfoRegistros() {
             Text(
                 text = "Restante:",
                 fontSize = 16.sp,
-                color = Color.White,
+                color = LocalContentColor.current,
                 modifier = Modifier.align(Alignment.CenterVertically)
             )
             Text(
                 text = "S/ ${restante}.00",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFFD1C484),
+                color = LocalContentColor.current,
                 modifier = Modifier.align(Alignment.Bottom)
             )
         }
@@ -170,12 +180,12 @@ fun OptionsRegistro(navController: NavController) {
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp),
-        colors = ButtonDefaults.buttonColors(Color(0xFF00183F))
+        colors = ButtonDefaults.buttonColors(LocalContentColor.current)
     ) {
         Text(
             text = "Registrar nuevo gasto",
             fontSize = 20.sp,
-            color = Color.White
+            color = LocalContentColor.current
         )
     }
     Spacer(modifier = Modifier.padding(8.dp))
@@ -184,12 +194,12 @@ fun OptionsRegistro(navController: NavController) {
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp),
-        colors = ButtonDefaults.buttonColors(Color(0xFF00183F))
+        colors = ButtonDefaults.buttonColors(LocalContentColor.current)
     ) {
         Text(
             text = "Ver gastos",
             fontSize = 20.sp,
-            color = Color.White
+            color = LocalContentColor.current
         )
     }
 }

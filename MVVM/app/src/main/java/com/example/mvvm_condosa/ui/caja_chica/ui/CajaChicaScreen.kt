@@ -2,6 +2,7 @@ package com.example.mvvm_condosa.ui.caja_chica.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,6 +22,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -43,12 +45,20 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
 import androidx.navigation.NavController
 import com.example.mvvm_condosa.ui.navigation.AppScreens
+import com.example.mvvm_condosa.ui.theme.DarkColors
+import com.example.mvvm_condosa.ui.theme.LightColors
 
 @Composable
 fun CajaChicaScreen(navController: NavController) {
+    val colorScheme = if (isSystemInDarkTheme()) {
+        DarkColors
+    } else {
+        LightColors
+    }
+
     val gradient = Brush.linearGradient(
-        0.0f to Color(0xFF0052D6),
-        1000.0f to Color(0xFF00183F),
+        0.0f to colorScheme.primary,
+        1000.0f to colorScheme.primaryContainer,
         start = Offset.Zero,
         end = Offset.Infinite
     )
@@ -85,7 +95,7 @@ fun CajaChica(navController: NavController) {
 fun HeaderTitle() {
     Text(
         text = "Caja Chica",
-        color = Color.White,
+        color = LocalContentColor.current,
         fontSize = 40.sp,
         fontWeight = FontWeight.Bold
     )
@@ -117,7 +127,7 @@ fun SelectedPredio() {
             label = {
                 Text(
                     text = "Selecciona un predio",
-                    color = Color(0xFFACACAC)
+                    color = LocalContentColor.current
                 )
             },
             trailingIcon = {
@@ -125,7 +135,7 @@ fun SelectedPredio() {
                     imageVector = icon,
                     contentDescription = null,
                     modifier = Modifier.clickable { expanded = !expanded },
-                    tint = Color(0xFFACACAC)
+                    tint = LocalContentColor.current
                 )
             }
         )
@@ -162,12 +172,12 @@ fun OptionsCaja(navController: NavController) {
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp),
-        colors = ButtonDefaults.buttonColors(Color(0xFF00183F))
+        colors = ButtonDefaults.buttonColors(LocalContentColor.current)
     ) {
         Text(
             text = "Gastos del mes anterior",
             fontSize = 20.sp,
-            color = Color.White
+            color = LocalContentColor.current
         )
     }
     Spacer(modifier = Modifier.padding(8.dp))
@@ -176,12 +186,12 @@ fun OptionsCaja(navController: NavController) {
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp),
-        colors = ButtonDefaults.buttonColors(Color(0xFF00183F))
+        colors = ButtonDefaults.buttonColors(LocalContentColor.current)
     ) {
         Text(
             text = "Registro de gastos",
             fontSize = 20.sp,
-            color = Color.White
+            color = LocalContentColor.current
         )
     }
 }
