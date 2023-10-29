@@ -1,12 +1,90 @@
 <resources>
-    <string name="app_name">MVVM_Condosa</string>
+    // Caja Chica UI
 
+        // Añadir Gasto Screen
+            <string name="añadir_nuevo_gasto">Añadir nuevo gasto</string>
+            <string name="selecciona_fecha">Selecciona Fecha</string>
+            <string name="registrar_gasto">Registrar gasto</string>
+
+        // Caja Chica Screen
+            <string name="caja_chica">Caja Chica</string>
+            <string name="selecciona_un_predio">Selecciona un predio</string>
+            <string name="gastos_del_mes_anterior">Gastos del mes anterior</string>
+            <string name="registro_de_gastos">Registro de gastos</string>
+
+        // Gastos Mes Anterior Screen
+            <string name="gastos_del_mes_anterior_1">Gastos del mes anterior</string>
+            <string name="gasto_total">Gasto Total</string>
+            <string name="del_mes_anterior">del mes anterior:</string>
+            <string name="gasto_total_result">S/ %1$s.00</string>
+            <string name="caja_chica_1">Caja Chica</string>
+            <string name="asignada">asignada</string>
+            <string name="caja_chica_result">S/ %1$s.00</string>
+            <string name="numero_nro">Nro: %1$s</string>
+            <string name="gasto_result">S/ %1$s.00</string>
+
+        // Gastos Screen
+            <string name="gasto_total_1">Gasto Total:</string>
+            <string name="consumido_result">S/ %1$s.00</string>
+            <string name="gastos_de_caja_chica">Gastos de caja chica</string>
+            <string name="monto_result">S/ %1$s.00</string>
+            <string name="mas_info">Mas info</string>
+            <string name="mas_info_1">Mas info</string>
+            <string name="mas_info_2">Mas info</string>
+
+        // Registro Gastos Screen
+            <string name="registro_de_gastos_1">Registro de Gastos</string>
+            <string name="caja_chica_2">Caja chica</string>
+            <string name="asignada_1">asignada:</string>
+            <string name="caja_chica_result_1">S/ %1$s.00</string>
+            <string name="consumido">Consumido:</string>
+            <string name="consumido_result_1">S/ %1$s.00</string>
+            <string name="restante">Restante:</string>
+            <string name="restante_result">S/ %1$s.00</string>
+            <string name="registrar_nuevo_gasto">Registrar nuevo gasto</string>
+            <string name="ver_gastos">Ver gastos</string>
+
+    // Home UI
+
+        // Achievement Screen
+            <string name="nro_condominios">58</string>
+            <string name="condominios">Condominios</string>
+            <string name="nro_condominios_1">49</string>
+            <string name="condominios_1">Condominios</string>
+            <string name="nro_condominios_2">26</string>
+            <string name="condominios_2">Condominios</string>
+            <string name="nro_condominios_3">34</string>
+            <string name="condominios_3">Condominios</string>
+
+        // Home Screen
+            <string name="condosa">Condosa</string>
+            <string name="texto">15+ Años de Excelencia en Condominios para Tu Comodidad y Seguridad Inigualables.</string>
+            <string name="texto_1">Tu Hogar, Nuestra Pasión</string>
+            <string name="texto_2">¡Descubre la Diferencia Ahora!</string>
+            <string name="texto_3">¡Cotiza nuestro servicio!</string>
+            <string name="grafico_estadistico">Gráfico estadistico...</string>
+            <string name="opciones_de_administrador">Opciones de Administrador</string>
+            <string name="opcion_1">Opción 1</string>
+            <string name="opcion_2">Opción 2</string>
+            <string name="revision_de_caja_chica">Revisión de caja chica</string>
+            <string name="opcion_4">Opción 4</string>
+            <string name="texto_4">Condominios S.A. © 2023</string>
+
+    // Login UI
+
+        // Login Screen
+            <string name="condosa_1">Condosa</string>
+            <string name="Adm">¡ Administración de condominios !</string>
+            <string name="iniciar_sesion">Iniciar Sesión</string>
+            <string name="olvidaste_tu_contrasena">¿Olvidaste tu contraseña?</string>
+
+    // Settings UI
+
+        // Settings Screen
+            <string name="settings">Settings</string>
+
+    <string name="app_name">MVVM_Condosa</string>
     <string name="home">Home</string>
     <string name="account">Account</string>
-    <string name="Condosa">Condosa</string>
-    <string name="Adm">¡ Administración de condominios !</string>
-
-    <string name="condominios">Condominios</string>
-    <string name="hola">Hola</string>
 
 </resources>

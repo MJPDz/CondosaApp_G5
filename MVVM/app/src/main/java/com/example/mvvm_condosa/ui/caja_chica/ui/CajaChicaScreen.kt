@@ -38,12 +38,14 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
 import androidx.navigation.NavController
+import com.example.mvvm_condosa.R
 import com.example.mvvm_condosa.ui.navigation.AppScreens
 import com.example.mvvm_condosa.ui.theme.DarkColors
 import com.example.mvvm_condosa.ui.theme.LightColors
@@ -94,7 +96,7 @@ fun CajaChica(navController: NavController) {
 @Composable
 fun HeaderTitle() {
     Text(
-        text = "Caja Chica",
+        text = stringResource(id = R.string.caja_chica),
         color = LocalContentColor.current,
         fontSize = 40.sp,
         fontWeight = FontWeight.Bold
@@ -126,7 +128,7 @@ fun SelectedPredio() {
                 },
             label = {
                 Text(
-                    text = "Selecciona un predio",
+                    text = stringResource(id = R.string.selecciona_un_predio),
                     color = LocalContentColor.current
                 )
             },
@@ -175,7 +177,7 @@ fun OptionsCaja(navController: NavController) {
         colors = ButtonDefaults.buttonColors(LocalContentColor.current)
     ) {
         Text(
-            text = "Gastos del mes anterior",
+            text = stringResource(id = R.string.gastos_del_mes_anterior),
             fontSize = 20.sp,
             color = LocalContentColor.current
         )
@@ -189,7 +191,7 @@ fun OptionsCaja(navController: NavController) {
         colors = ButtonDefaults.buttonColors(LocalContentColor.current)
     ) {
         Text(
-            text = "Registro de gastos",
+            text = stringResource(id = R.string.registro_de_gastos),
             fontSize = 20.sp,
             color = LocalContentColor.current
         )

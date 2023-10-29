@@ -22,6 +22,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -79,7 +80,7 @@ fun GastosMesAnterior() {
 @Composable
 fun HeaderTitle_MesAnterior() {
     Text(
-        text = "Gastos del mes anterior",
+        text = stringResource(id = R.string.gastos_del_mes_anterior_1),
         color = LocalContentColor.current,
         fontSize = 40.sp,
         fontWeight = FontWeight.Bold,
@@ -104,18 +105,18 @@ fun InfoCajaChica() {
         ) {
             Column {
                 Text(
-                    text = "Gasto Total",
+                    text = stringResource(id = R.string.gasto_total),
                     fontSize = 16.sp,
                     color = LocalContentColor.current
                 )
                 Text(
-                    text = "del mes anterior:",
+                    text = stringResource(id = R.string.del_mes_anterior),
                     fontSize = 16.sp,
                     color = LocalContentColor.current
                 )
             }
             Text(
-                text = "S/ ${gastoTotal}.00",
+                text = stringResource(R.string.gasto_total_result, gastoTotal),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = LocalContentColor.current,
@@ -130,18 +131,18 @@ fun InfoCajaChica() {
         ) {
             Column {
                 Text(
-                    text = "Caja chica",
+                    text = stringResource(id = R.string.caja_chica_1),
                     fontSize = 16.sp,
                     color = LocalContentColor.current
                 )
                 Text(
-                    text = "asignada:",
+                    text = stringResource(id = R.string.asignada),
                     fontSize = 16.sp,
                     color = LocalContentColor.current
                 )
             }
             Text(
-                text = "S/ ${cajaChica}.00",
+                text = stringResource(R.string.caja_chica_result, cajaChica),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = LocalContentColor.current,
@@ -195,7 +196,7 @@ fun ListItemRow(item: GastosMesAnterior) {
             ) {
                 Column {
                     Text(
-                        text = "Nro: ${item.numero}",
+                        text = stringResource(R.string.numero_nro, item.numero),
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
                         color = LocalContentColor.current
@@ -208,7 +209,7 @@ fun ListItemRow(item: GastosMesAnterior) {
                 }
                 Column {
                     Text(
-                        text = "S/ ${item.gasto}.00",
+                        text = stringResource(R.string.gasto_result, item.gasto),
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
                         color = LocalContentColor.current,

@@ -38,12 +38,14 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.mvvm_condosa.R
 import com.example.mvvm_condosa.ui.navigation.AppScreens
 import com.example.mvvm_condosa.ui.theme.DarkColors
 import com.example.mvvm_condosa.ui.theme.LightColors
@@ -95,7 +97,7 @@ fun AnadirGastos(navController: NavController) {
 @Composable
 fun HeaderTitle_Anadir() {
     Text(
-        text = "Añadir nuevo gasto",
+        text = stringResource(id = R.string.añadir_nuevo_gasto),
         color = LocalContentColor.current,
         fontSize = 40.sp,
         fontWeight = FontWeight.Bold,
@@ -141,7 +143,7 @@ fun CampoFecha() {
                 readOnly = true,
                 label = {
                     Text(
-                        text = "Selecciona fecha",
+                        text = stringResource(id = R.string.selecciona_fecha),
                         color = LocalContentColor.current
                     )
                 },
@@ -209,7 +211,7 @@ fun ButtonAnadir(navController: NavController) {
         colors = ButtonDefaults.buttonColors(LocalContentColor.current)
     ) {
         Text(
-            text = "Registrar gasto",
+            text = stringResource(id = R.string.registrar_gasto),
             fontSize = 20.sp,
             color = LocalContentColor.current
         )

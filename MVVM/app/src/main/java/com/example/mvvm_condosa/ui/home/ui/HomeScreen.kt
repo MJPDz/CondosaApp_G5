@@ -26,6 +26,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -91,7 +92,7 @@ fun HeaderHome() {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
-            text = "Condosa",
+            text = stringResource(R.string.condosa),
             color = LocalContentColor.current,
             fontSize = 40.sp,
             modifier = Modifier.align(CenterVertically),
@@ -110,20 +111,20 @@ fun DescriptionHome() {
         modifier = Modifier
     ) {
         Text(
-            text = "15+ Años de Excelencia en Condominios para Tu Comodidad y Seguridad Inigualables.",
+            text = stringResource(R.string.texto), // 15+ Años de Excelencia en Condominios para Tu Comodidad y Seguridad Inigualables.
             color = LocalContentColor.current,
             fontSize = 20.sp
         )
         Spacer(modifier = Modifier.padding(8.dp))
         Text(
-            text = "Tu Hogar, Nuestra Pasión",
+            text = stringResource(R.string.texto_1), // Tu Hogar, Nuestra Pasión
             color = LocalContentColor.current,
             fontSize = 30.sp,
             lineHeight = 36.sp
         )
         Spacer(modifier = Modifier.padding(8.dp))
         Text(
-            text = "¡Descubre la Diferencia Ahora!",
+            text = stringResource(R.string.texto_2), // ¡Descubre la Diferencia Ahora!
             color = LocalContentColor.current,
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold
@@ -146,7 +147,7 @@ fun ButtonCotiza() {
         colors = ButtonDefaults.buttonColors(LocalContentColor.current)
     ) {
         Text(
-            text = "¡Cotiza nuestro servicio!",
+            text = stringResource(R.string.texto_3),
             fontSize = 20.sp,
             color = LocalContentColor.current
         )
@@ -156,7 +157,7 @@ fun ButtonCotiza() {
 @Composable
 fun GraphicHome() {
     Text(
-        text = "Gráfico estadistico...",
+        text = stringResource(R.string.grafico_estadistico),
         color = LocalContentColor.current,
         fontSize = 20.sp
     )
@@ -165,7 +166,7 @@ fun GraphicHome() {
 @Composable
 fun TitleOptionsHome() {
     Text(
-        text = "Opciones de Administrador",
+        text = stringResource(R.string.opciones_de_administrador),
         color = LocalContentColor.current,
         fontSize = 20.sp
     )
@@ -181,7 +182,7 @@ fun OptionsHome(navController: NavController) {
         colors = ButtonDefaults.buttonColors(LocalContentColor.current)
     ) {
         Text(
-            text = "Opción 1",
+            text = stringResource(R.string.opcion_1),
             fontSize = 20.sp,
             color = LocalContentColor.current
         )
@@ -195,7 +196,7 @@ fun OptionsHome(navController: NavController) {
         colors = ButtonDefaults.buttonColors(LocalContentColor.current)
     ) {
         Text(
-            text = "Opción 2",
+            text = stringResource(R.string.opcion_2),
             fontSize = 20.sp,
             color = LocalContentColor.current
         )
@@ -209,7 +210,7 @@ fun OptionsHome(navController: NavController) {
         colors = ButtonDefaults.buttonColors(LocalContentColor.current)
     ) {
         Text(
-            text = "Revisión de caja chica",
+            text = stringResource(R.string.revision_de_caja_chica),
             fontSize = 20.sp,
             color = LocalContentColor.current
         )
@@ -223,7 +224,7 @@ fun OptionsHome(navController: NavController) {
         colors = ButtonDefaults.buttonColors(LocalContentColor.current)
     ) {
         Text(
-            text = "Opción 4",
+            text = stringResource(R.string.opcion_4),
             fontSize = 20.sp,
             color = LocalContentColor.current
         )
@@ -241,7 +242,7 @@ fun FooterHome() {
             contentDescription = "Logo app"
         )
         Text(
-            text ="Condominios S.A. © 2023",
+            text = stringResource(R.string.texto_4),
             fontSize = 10.sp,
             color = LocalContentColor.current
         )

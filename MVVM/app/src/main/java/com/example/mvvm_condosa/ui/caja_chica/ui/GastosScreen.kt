@@ -35,6 +35,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -101,12 +102,12 @@ fun InfoGastoTotal() {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
-            text = "Gasto Total:",
+            text = stringResource(R.string.gasto_total_1),
             fontSize = 16.sp,
             color = LocalContentColor.current
         )
         Text(
-            text = "S/ ${consumido}.00",
+            text = stringResource(R.string.consumido_result, consumido),
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = LocalContentColor.current,
@@ -118,7 +119,7 @@ fun InfoGastoTotal() {
 @Composable
 fun HeaderTitle_GastosCasa() {
     Text(
-        text = "Gastos de caja chica",
+        text = stringResource(R.string.gastos_de_caja_chica),
         color = LocalContentColor.current,
         fontSize = 40.sp,
         fontWeight = FontWeight.Bold,
@@ -208,7 +209,7 @@ fun ListGastosRow(item: GastosCasa) {
                             onClick = { expanded = !expanded }
                         )
                         Text(
-                            text = "S/ ${item.monto}.00",
+                            text = stringResource(R.string.monto_result, item.monto),
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Bold,
                             color = LocalContentColor.current
@@ -246,18 +247,18 @@ private fun GastoItemButton(
 @Composable
 fun GastoItemExtend() {
     Text(
-        text = "Mas info",
+        text = stringResource(R.string.mas_info),
         fontSize = 18.sp,
         fontWeight = FontWeight.Bold,
         color = Color.White
     )
     Text(
-        text = "Mas info",
+        text = stringResource(R.string.mas_info_1),
         fontSize = 16.sp,
         color = LocalContentColor.current
     )
     Text(
-        text = "Mas info",
+        text = stringResource(R.string.mas_info_2),
         fontSize = 16.sp,
         color = LocalContentColor.current
     )

@@ -23,11 +23,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.mvvm_condosa.R
 import com.example.mvvm_condosa.data.GastosCasaSource.gastosCasa
 import com.example.mvvm_condosa.data.GastosMesAnteriorSource.gastosMesAnterior
 import com.example.mvvm_condosa.ui.navigation.AppScreens
@@ -81,7 +83,7 @@ fun RegistroGastos(navController: NavController) {
 @Composable
 fun HeaderTitle_Registro() {
     Text(
-        text = "Registro de Gastos",
+        text = stringResource(R.string.registro_de_gastos_1),
         color = LocalContentColor.current,
         fontSize = 40.sp,
         fontWeight = FontWeight.Bold,
@@ -112,18 +114,18 @@ fun InfoRegistros() {
         ) {
             Column {
                 Text(
-                    text = "Caja chica",
+                    text = stringResource(R.string.caja_chica_2),
                     fontSize = 16.sp,
                     color = LocalContentColor.current
                 )
                 Text(
-                    text = "asignada:",
+                    text = stringResource(R.string.asignada_1),
                     fontSize = 16.sp,
                     color = LocalContentColor.current
                 )
             }
             Text(
-                text = "S/ ${cajaChica}.00",
+                text = stringResource(R.string.caja_chica_result_1, cajaChica),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = LocalContentColor.current,
@@ -137,13 +139,13 @@ fun InfoRegistros() {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = "Consumido:",
+                text = stringResource(R.string.consumido),
                 fontSize = 16.sp,
                 color = LocalContentColor.current,
                 modifier = Modifier.align(Alignment.CenterVertically)
             )
             Text(
-                text = "S/ ${consumido}.00",
+                text = stringResource(R.string.consumido_result_1, consumido),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = LocalContentColor.current,
@@ -157,13 +159,13 @@ fun InfoRegistros() {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = "Restante:",
+                text = stringResource(R.string.restante),
                 fontSize = 16.sp,
                 color = LocalContentColor.current,
                 modifier = Modifier.align(Alignment.CenterVertically)
             )
             Text(
-                text = "S/ ${restante}.00",
+                text = stringResource(R.string.restante_result, restante),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = LocalContentColor.current,
@@ -183,7 +185,7 @@ fun OptionsRegistro(navController: NavController) {
         colors = ButtonDefaults.buttonColors(LocalContentColor.current)
     ) {
         Text(
-            text = "Registrar nuevo gasto",
+            text = stringResource(R.string.registrar_nuevo_gasto),
             fontSize = 20.sp,
             color = LocalContentColor.current
         )
@@ -197,7 +199,7 @@ fun OptionsRegistro(navController: NavController) {
         colors = ButtonDefaults.buttonColors(LocalContentColor.current)
     ) {
         Text(
-            text = "Ver gastos",
+            text = stringResource(R.string.ver_gastos),
             fontSize = 20.sp,
             color = LocalContentColor.current
         )

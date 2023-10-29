@@ -101,7 +101,7 @@ fun HeaderText() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = stringResource(id = R.string.Condosa),
+            text = stringResource(id = R.string.condosa_1),
             style = MaterialTheme.typography.displayLarge,
             color = LocalContentColor.current
         )
@@ -123,14 +123,17 @@ fun LoginButton(navController: NavController) {
             .padding(dimensionResource(id = R.dimen.padding_botton)),
         colors = ButtonDefaults.buttonColors(LocalContentColor.current)
     ) {
-        Text(text = "Iniciar Sesión", fontSize = 20.sp, color = LocalContentColor.current)
+        Text(
+            text = stringResource(R.string.iniciar_sesion),
+            fontSize = 20.sp,
+            color = LocalContentColor.current)
     }
 }
 
 @Composable
 fun ForgotPassword(modifier: Modifier) {
     Text(
-        text = "¿Olvidaste tu contraseña?",
+        text = stringResource(R.string.olvidaste_tu_contrasena),
         modifier = modifier.clickable {  },
         fontSize = 15.sp,
         fontWeight = FontWeight.Bold,

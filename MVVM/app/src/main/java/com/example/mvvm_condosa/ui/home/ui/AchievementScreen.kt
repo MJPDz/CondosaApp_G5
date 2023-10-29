@@ -59,22 +59,22 @@ fun AchievementCard(modifier: Modifier = Modifier) {
         ) {
             Card(modifier = Modifier.padding(end = 8.dp)){
                 Box(modifier = Modifier
-                        .background(gradient)
-                        .padding(15.dp)
+                    .background(gradient)
+                    .padding(15.dp)
                 ){
                     Column(
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            text = "58",
+                            text = stringResource(R.string.nro_condominios),
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
                             color = LocalContentColor.current,
                             modifier = modifier.padding(top = 8.dp)
                         )
                         Text(
-                            text = "Condominios",
+                            text = stringResource(R.string.condominios),
                             fontSize = 14.sp,
                             color = LocalContentColor.current,
                             modifier = modifier.padding(bottom = 8.dp)
@@ -92,14 +92,14 @@ fun AchievementCard(modifier: Modifier = Modifier) {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            text = "49",
+                            text = stringResource(R.string.nro_condominios_1),
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
                             color = LocalContentColor.current,
                             modifier = modifier.padding(top = 8.dp)
                         )
                         Text(
-                            text = "Condominios",
+                            text = stringResource(R.string.condominios_1),
                             fontSize = 14.sp,
                             color = LocalContentColor.current,
                             modifier = modifier.padding(bottom = 8.dp)
@@ -123,14 +123,14 @@ fun AchievementCard(modifier: Modifier = Modifier) {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            text = "26",
+                            text = stringResource(R.string.nro_condominios_2),
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
                             color = LocalContentColor.current,
                             modifier = modifier.padding(top = 8.dp)
                         )
                         Text(
-                            text = "Condominios",
+                            text = stringResource(R.string.condominios_2),
                             fontSize = 14.sp,
                             color = LocalContentColor.current,
                             modifier = modifier.padding(bottom = 8.dp)
@@ -148,14 +148,14 @@ fun AchievementCard(modifier: Modifier = Modifier) {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            text = "34",
+                            text = stringResource(R.string.nro_condominios_3),
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
                             color = LocalContentColor.current,
                             modifier = modifier.padding(top = 8.dp)
                         )
                         Text(
-                            text = "Condominios",
+                            text = stringResource(R.string.condominios_3),
                             fontSize = 14.sp,
                             color = LocalContentColor.current,
                             modifier = modifier.padding(bottom = 8.dp)
