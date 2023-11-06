@@ -43,11 +43,9 @@ fun AchievementCard(modifier: Modifier = Modifier) {
         LightColors
     }
 
-    val gradient = Brush.linearGradient(
-        0.0f to colorScheme.primary,
-        1000.0f to colorScheme.primaryContainer,
-        start = Offset.Zero,
-        end = Offset.Infinite
+    Box(
+        modifier = modifier
+            .background(colorScheme.secondaryContainer), // Establece el color de fondo aquí
     )
 
     Column(
@@ -59,7 +57,7 @@ fun AchievementCard(modifier: Modifier = Modifier) {
         ) {
             Card(modifier = Modifier.padding(end = 8.dp)){
                 Box(modifier = Modifier
-                    .background(gradient)
+                    .background(colorScheme.secondary)
                     .padding(15.dp)
                 ){
                     Column(
@@ -70,13 +68,13 @@ fun AchievementCard(modifier: Modifier = Modifier) {
                             text = stringResource(R.string.nro_condominios),
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            color = LocalContentColor.current,
+                            color = colorScheme.onSecondary,
                             modifier = modifier.padding(top = 8.dp)
                         )
                         Text(
                             text = stringResource(R.string.condominios),
                             fontSize = 14.sp,
-                            color = LocalContentColor.current,
+                            color = colorScheme.onSecondary,
                             modifier = modifier.padding(bottom = 8.dp)
                         )
                     }
@@ -84,7 +82,7 @@ fun AchievementCard(modifier: Modifier = Modifier) {
             }
             Card(modifier = Modifier.padding(start = 8.dp)){
                 Box(modifier = Modifier
-                    .background(gradient)
+                    .background(colorScheme.secondary)
                     .padding(15.dp)
                 ){
                     Column(
@@ -95,13 +93,13 @@ fun AchievementCard(modifier: Modifier = Modifier) {
                             text = stringResource(R.string.nro_condominios_1),
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            color = LocalContentColor.current,
+                            color = colorScheme.onSecondary,
                             modifier = modifier.padding(top = 8.dp)
                         )
                         Text(
                             text = stringResource(R.string.condominios_1),
                             fontSize = 14.sp,
-                            color = LocalContentColor.current,
+                            color = colorScheme.onSecondary,
                             modifier = modifier.padding(bottom = 8.dp)
                         )
                     }
@@ -115,7 +113,7 @@ fun AchievementCard(modifier: Modifier = Modifier) {
         ) {
             Card(modifier = Modifier.padding(end = 8.dp)){
                 Box(modifier = Modifier
-                    .background(gradient)
+                    .background(colorScheme.secondary)
                     .padding(15.dp)
                 ){
                     Column(
@@ -126,13 +124,13 @@ fun AchievementCard(modifier: Modifier = Modifier) {
                             text = stringResource(R.string.nro_condominios_2),
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            color = LocalContentColor.current,
+                            color = colorScheme.onSecondary,
                             modifier = modifier.padding(top = 8.dp)
                         )
                         Text(
                             text = stringResource(R.string.condominios_2),
                             fontSize = 14.sp,
-                            color = LocalContentColor.current,
+                            color = colorScheme.onSecondary,
                             modifier = modifier.padding(bottom = 8.dp)
                         )
                     }
@@ -140,7 +138,7 @@ fun AchievementCard(modifier: Modifier = Modifier) {
             }
             Card(modifier = Modifier.padding(start = 8.dp)){
                 Box(modifier = Modifier
-                    .background(gradient)
+                    .background(colorScheme.secondary)
                     .padding(15.dp)
                 ){
                     Column(
@@ -151,13 +149,13 @@ fun AchievementCard(modifier: Modifier = Modifier) {
                             text = stringResource(R.string.nro_condominios_3),
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            color = LocalContentColor.current,
+                            color = colorScheme.onSecondary,
                             modifier = modifier.padding(top = 8.dp)
                         )
                         Text(
                             text = stringResource(R.string.condominios_3),
                             fontSize = 14.sp,
-                            color = LocalContentColor.current,
+                            color = colorScheme.onSecondary,
                             modifier = modifier.padding(bottom = 8.dp)
                         )
                     }

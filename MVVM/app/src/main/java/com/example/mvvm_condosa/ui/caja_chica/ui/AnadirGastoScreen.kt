@@ -21,8 +21,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -86,7 +88,7 @@ fun AnadirGastos(navController: NavController) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        HeaderTitle_Anadir()
+        HeaderTitle_Anadir(colorScheme)
         Spacer(modifier = Modifier.padding(20.dp))
         Formulario_Anadir()
         Spacer(modifier = Modifier.padding(20.dp))
@@ -95,10 +97,10 @@ fun AnadirGastos(navController: NavController) {
 }
 
 @Composable
-fun HeaderTitle_Anadir() {
+fun HeaderTitle_Anadir(colorScheme: ColorScheme) {
     Text(
         text = stringResource(id = R.string.añadir_nuevo_gasto),
-        color = LocalContentColor.current,
+        color = colorScheme.onPrimary,
         fontSize = 40.sp,
         fontWeight = FontWeight.Bold,
         textAlign = TextAlign.Center,
@@ -144,7 +146,7 @@ fun CampoFecha() {
                 label = {
                     Text(
                         text = stringResource(id = R.string.selecciona_fecha),
-                        color = LocalContentColor.current
+                        color = colorScheme.onSecondary
                     )
                 },
                 trailingIcon = {
@@ -152,7 +154,7 @@ fun CampoFecha() {
                         imageVector = Icons.Filled.DateRange,
                         contentDescription = null,
                         modifier = Modifier.clickable { nDatePickerDialog.show() },
-                        tint = LocalContentColor.current
+                        tint = colorScheme.onPrimary
                     )
                 },
                 modifier = Modifier.fillMaxWidth()
@@ -208,12 +210,12 @@ fun ButtonAnadir(navController: NavController) {
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp),
-        colors = ButtonDefaults.buttonColors(LocalContentColor.current)
+        colors = ButtonDefaults.buttonColors(colorScheme.tertiaryContainer)
     ) {
         Text(
             text = stringResource(id = R.string.registrar_gasto),
             fontSize = 20.sp,
-            color = LocalContentColor.current
+            color = colorScheme.onTertiaryContainer
         )
     }
 }

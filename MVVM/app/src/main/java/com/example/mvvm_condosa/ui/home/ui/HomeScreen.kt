@@ -16,7 +16,9 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -35,7 +37,7 @@ import com.example.mvvm_condosa.R
 import com.example.mvvm_condosa.ui.navigation.AppScreens
 import com.example.mvvm_condosa.ui.theme.DarkColors
 import com.example.mvvm_condosa.ui.theme.LightColors
-
+import com.example.mvvm_condosa.ui.theme.Typography
 @Composable
 fun HomeScreen(navController: NavController) {
     val colorScheme = if (isSystemInDarkTheme()) {
@@ -65,27 +67,27 @@ fun Home(navController: NavController) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        HeaderHome()
+        HeaderHome(colorScheme)
         Spacer(modifier = Modifier.padding(12.dp))
-        DescriptionHome()
+        DescriptionHome(colorScheme)
         Spacer(modifier = Modifier.padding(12.dp))
         DataCardsHome()
         Spacer(modifier = Modifier.padding(12.dp))
-        ButtonCotiza()
+        ButtonCotiza(colorScheme)
         Spacer(modifier = Modifier.padding(40.dp))
-        GraphicHome()
+        GraphicHome(colorScheme)
         Spacer(modifier = Modifier.padding(40.dp))
-        TitleOptionsHome()
+        TitleOptionsHome(colorScheme)
         Spacer(modifier = Modifier.padding(12.dp))
-        OptionsHome(navController)
+        OptionsHome(navController, colorScheme)
         Spacer(modifier = Modifier.padding(60.dp))
-        FooterHome()
+        FooterHome(colorScheme)
         Spacer(modifier = Modifier.padding(12.dp))
     }
 }
 
 @Composable
-fun HeaderHome() {
+fun HeaderHome(colorScheme: ColorScheme) {
     Row(
         modifier = Modifier
             .fillMaxWidth(),
@@ -93,7 +95,7 @@ fun HeaderHome() {
     ) {
         Text(
             text = stringResource(R.string.condosa),
-            color = LocalContentColor.current,
+            color = colorScheme.onPrimary,
             fontSize = 40.sp,
             modifier = Modifier.align(CenterVertically),
             fontWeight = FontWeight.Bold
@@ -106,26 +108,28 @@ fun HeaderHome() {
 }
 
 @Composable
-fun DescriptionHome() {
+fun DescriptionHome(colorScheme: ColorScheme) {
     Column(
         modifier = Modifier
     ) {
         Text(
             text = stringResource(R.string.texto), // 15+ Años de Excelencia en Condominios para Tu Comodidad y Seguridad Inigualables.
-            color = LocalContentColor.current,
-            fontSize = 20.sp
+            color = colorScheme.onPrimary,
+            style = Typography.bodyMedium,
+
+
         )
         Spacer(modifier = Modifier.padding(8.dp))
         Text(
             text = stringResource(R.string.texto_1), // Tu Hogar, Nuestra Pasión
-            color = LocalContentColor.current,
+            color = colorScheme.onPrimary,
             fontSize = 30.sp,
             lineHeight = 36.sp
         )
         Spacer(modifier = Modifier.padding(8.dp))
         Text(
             text = stringResource(R.string.texto_2), // ¡Descubre la Diferencia Ahora!
-            color = LocalContentColor.current,
+            color = colorScheme.onPrimary,
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold
         )
@@ -138,53 +142,53 @@ fun DataCardsHome() {
 }
 
 @Composable
-fun ButtonCotiza() {
+fun ButtonCotiza(colorScheme: ColorScheme) {
     Button(
         onClick = { },
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp),
-        colors = ButtonDefaults.buttonColors(LocalContentColor.current)
+        colors = ButtonDefaults.buttonColors(colorScheme.primaryContainer)
     ) {
         Text(
             text = stringResource(R.string.texto_3),
             fontSize = 20.sp,
-            color = LocalContentColor.current
+            color = colorScheme.onPrimaryContainer
         )
     }
 }
 
 @Composable
-fun GraphicHome() {
+fun GraphicHome(colorScheme: ColorScheme) {
     Text(
         text = stringResource(R.string.grafico_estadistico),
-        color = LocalContentColor.current,
-        fontSize = 20.sp
+        color = colorScheme.primary,
+        style = Typography.bodyMedium,
     )
 }
 
 @Composable
-fun TitleOptionsHome() {
+fun TitleOptionsHome(colorScheme: ColorScheme) {
     Text(
         text = stringResource(R.string.opciones_de_administrador),
-        color = LocalContentColor.current,
-        fontSize = 20.sp
+        color = colorScheme.onPrimary,
+        style = Typography.displayMedium,
     )
 }
 
 @Composable
-fun OptionsHome(navController: NavController) {
+fun OptionsHome(navController: NavController, colorScheme: ColorScheme) {
     Button(
         onClick = { },
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp),
-        colors = ButtonDefaults.buttonColors(LocalContentColor.current)
+        colors = ButtonDefaults.buttonColors(colorScheme.tertiaryContainer)
     ) {
         Text(
             text = stringResource(R.string.opcion_1),
             fontSize = 20.sp,
-            color = LocalContentColor.current
+            color = colorScheme.onTertiaryContainer
         )
     }
     Spacer(modifier = Modifier.padding(8.dp))
@@ -193,12 +197,12 @@ fun OptionsHome(navController: NavController) {
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp),
-        colors = ButtonDefaults.buttonColors(LocalContentColor.current)
+        colors = ButtonDefaults.buttonColors(colorScheme.tertiaryContainer)
     ) {
         Text(
             text = stringResource(R.string.opcion_2),
             fontSize = 20.sp,
-            color = LocalContentColor.current
+            color = colorScheme.onTertiaryContainer
         )
     }
     Spacer(modifier = Modifier.padding(8.dp))
@@ -207,12 +211,12 @@ fun OptionsHome(navController: NavController) {
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp),
-        colors = ButtonDefaults.buttonColors(LocalContentColor.current)
+        colors = ButtonDefaults.buttonColors(colorScheme.tertiaryContainer)
     ) {
         Text(
             text = stringResource(R.string.revision_de_caja_chica),
             fontSize = 20.sp,
-            color = LocalContentColor.current
+            color = colorScheme.onTertiaryContainer
         )
     }
     Spacer(modifier = Modifier.padding(8.dp))
@@ -221,18 +225,18 @@ fun OptionsHome(navController: NavController) {
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp),
-        colors = ButtonDefaults.buttonColors(LocalContentColor.current)
+        colors = ButtonDefaults.buttonColors(colorScheme.tertiaryContainer)
     ) {
         Text(
             text = stringResource(R.string.opcion_4),
             fontSize = 20.sp,
-            color = LocalContentColor.current
+            color = colorScheme.onTertiaryContainer
         )
     }
 }
 
 @Composable
-fun FooterHome() {
+fun FooterHome(colorScheme: ColorScheme) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -244,7 +248,7 @@ fun FooterHome() {
         Text(
             text = stringResource(R.string.texto_4),
             fontSize = 10.sp,
-            color = LocalContentColor.current
+            color = colorScheme.onPrimary
         )
     }
 }

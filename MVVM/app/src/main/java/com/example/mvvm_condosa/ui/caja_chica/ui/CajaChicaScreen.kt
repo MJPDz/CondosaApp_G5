@@ -19,10 +19,12 @@ import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -85,26 +87,26 @@ fun CajaChica(navController: NavController) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        HeaderTitle()
+        HeaderTitle(colorScheme)
         Spacer(modifier = Modifier.padding(40.dp))
-        SelectedPredio()
+        SelectedPredio(colorScheme)
         Spacer(modifier = Modifier.padding(80.dp))
-        OptionsCaja(navController)
+        OptionsCaja(navController, colorScheme)
     }
 }
 
 @Composable
-fun HeaderTitle() {
+fun HeaderTitle(colorScheme : ColorScheme) {
     Text(
         text = stringResource(id = R.string.caja_chica),
-        color = LocalContentColor.current,
+        color = colorScheme.onPrimary ,
         fontSize = 40.sp,
         fontWeight = FontWeight.Bold
     )
 }
 
 @Composable
-fun SelectedPredio() {
+fun SelectedPredio(colorScheme : ColorScheme) {
     var expanded by remember { mutableStateOf(false) }
     val list = listOf("Predio 1", "Predio 2", "Predio 3", "Predio 4", "Predio 5")
     var selectedItem by remember { mutableStateOf("") }
@@ -129,7 +131,7 @@ fun SelectedPredio() {
             label = {
                 Text(
                     text = stringResource(id = R.string.selecciona_un_predio),
-                    color = LocalContentColor.current
+                    color = colorScheme.onPrimary
                 )
             },
             trailingIcon = {
@@ -137,7 +139,7 @@ fun SelectedPredio() {
                     imageVector = icon,
                     contentDescription = null,
                     modifier = Modifier.clickable { expanded = !expanded },
-                    tint = LocalContentColor.current
+                    tint = colorScheme.primary
                 )
             }
         )
@@ -168,18 +170,18 @@ fun SelectedPredio() {
 
 
 @Composable
-fun OptionsCaja(navController: NavController) {
+fun OptionsCaja(navController: NavController, colorScheme : ColorScheme) {
     Button(
         onClick = { navController.navigate(route = AppScreens.GastosMesAnteriorScreen.route) },
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp),
-        colors = ButtonDefaults.buttonColors(LocalContentColor.current)
+        colors = ButtonDefaults.buttonColors(colorScheme.secondaryContainer)
     ) {
         Text(
             text = stringResource(id = R.string.gastos_del_mes_anterior),
             fontSize = 20.sp,
-            color = LocalContentColor.current
+            color = colorScheme.onSecondaryContainer
         )
     }
     Spacer(modifier = Modifier.padding(8.dp))
@@ -188,12 +190,12 @@ fun OptionsCaja(navController: NavController) {
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp),
-        colors = ButtonDefaults.buttonColors(LocalContentColor.current)
+        colors = ButtonDefaults.buttonColors(colorScheme.secondaryContainer)
     ) {
         Text(
             text = stringResource(id = R.string.registro_de_gastos),
             fontSize = 20.sp,
-            color = LocalContentColor.current
+            color = colorScheme.onSecondaryContainer
         )
     }
 }

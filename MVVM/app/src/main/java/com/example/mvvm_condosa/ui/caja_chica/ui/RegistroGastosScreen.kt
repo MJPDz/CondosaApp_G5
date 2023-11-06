@@ -15,7 +15,9 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -72,19 +74,19 @@ fun RegistroGastos(navController: NavController) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        HeaderTitle_Registro()
+        HeaderTitle_Registro(colorScheme)
         Spacer(modifier = Modifier.padding(20.dp))
-        InfoRegistros()
+        InfoRegistros(colorScheme)
         Spacer(modifier = Modifier.padding(20.dp))
-        OptionsRegistro(navController)
+        OptionsRegistro(navController, colorScheme)
     }
 }
 
 @Composable
-fun HeaderTitle_Registro() {
+fun HeaderTitle_Registro(colorScheme: ColorScheme) {
     Text(
         text = stringResource(R.string.registro_de_gastos_1),
-        color = LocalContentColor.current,
+        color = colorScheme.onPrimary,
         fontSize = 40.sp,
         fontWeight = FontWeight.Bold,
         textAlign = TextAlign.Center,
@@ -93,7 +95,7 @@ fun HeaderTitle_Registro() {
 }
 
 @Composable
-fun InfoRegistros() {
+fun InfoRegistros(colorScheme: ColorScheme) {
     var gastoTotal = 0
     gastosMesAnterior.forEach { gastoAnterior ->
         gastoTotal  += gastoAnterior.gasto
@@ -116,19 +118,19 @@ fun InfoRegistros() {
                 Text(
                     text = stringResource(R.string.caja_chica_2),
                     fontSize = 16.sp,
-                    color = LocalContentColor.current
+                    color = colorScheme.onPrimary
                 )
                 Text(
                     text = stringResource(R.string.asignada_1),
                     fontSize = 16.sp,
-                    color = LocalContentColor.current
+                    color = colorScheme.onPrimary
                 )
             }
             Text(
                 text = stringResource(R.string.caja_chica_result_1, cajaChica),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
-                color = LocalContentColor.current,
+                color = colorScheme.onPrimary,
                 modifier = Modifier.align(Alignment.Bottom)
             )
         }
@@ -141,14 +143,14 @@ fun InfoRegistros() {
             Text(
                 text = stringResource(R.string.consumido),
                 fontSize = 16.sp,
-                color = LocalContentColor.current,
+                color = colorScheme.onPrimary,
                 modifier = Modifier.align(Alignment.CenterVertically)
             )
             Text(
                 text = stringResource(R.string.consumido_result_1, consumido),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
-                color = LocalContentColor.current,
+                color = colorScheme.onPrimary,
                 modifier = Modifier.align(Alignment.Bottom)
             )
         }
@@ -161,14 +163,14 @@ fun InfoRegistros() {
             Text(
                 text = stringResource(R.string.restante),
                 fontSize = 16.sp,
-                color = LocalContentColor.current,
+                color = colorScheme.onPrimary,
                 modifier = Modifier.align(Alignment.CenterVertically)
             )
             Text(
                 text = stringResource(R.string.restante_result, restante),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
-                color = LocalContentColor.current,
+                color = colorScheme.onPrimary,
                 modifier = Modifier.align(Alignment.Bottom)
             )
         }
@@ -176,18 +178,18 @@ fun InfoRegistros() {
 }
 
 @Composable
-fun OptionsRegistro(navController: NavController) {
+fun OptionsRegistro(navController: NavController, colorScheme: ColorScheme) {
     Button(
         onClick = { navController.navigate(route = AppScreens.AnadirGastoScreen.route) },
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp),
-        colors = ButtonDefaults.buttonColors(LocalContentColor.current)
+        colors = ButtonDefaults.buttonColors(colorScheme.secondaryContainer)
     ) {
         Text(
             text = stringResource(R.string.registrar_nuevo_gasto),
             fontSize = 20.sp,
-            color = LocalContentColor.current
+            color = colorScheme.onSecondaryContainer
         )
     }
     Spacer(modifier = Modifier.padding(8.dp))
@@ -196,12 +198,12 @@ fun OptionsRegistro(navController: NavController) {
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp),
-        colors = ButtonDefaults.buttonColors(LocalContentColor.current)
+        colors = ButtonDefaults.buttonColors(colorScheme.secondaryContainer)
     ) {
         Text(
             text = stringResource(R.string.ver_gastos),
             fontSize = 20.sp,
-            color = LocalContentColor.current
+            color = colorScheme.onSecondaryContainer
         )
     }
 }

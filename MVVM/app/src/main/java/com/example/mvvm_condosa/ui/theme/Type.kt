@@ -1,5 +1,7 @@
 package com.example.mvvm_condosa.ui.theme
 
+
+
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
@@ -79,6 +81,16 @@ val Typography = Typography(
         fontFamily = Montserrat,
         fontWeight = FontWeight.Normal,
         fontSize = 14.sp
+    ),
+
+    bodyMedium = TextStyle(   // cuerpo grande
+        fontFamily = Montserrat,
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp
     )
+
+
+
+
 )
 

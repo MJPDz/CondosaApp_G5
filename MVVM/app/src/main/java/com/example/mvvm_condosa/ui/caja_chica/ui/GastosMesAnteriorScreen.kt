@@ -13,7 +13,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -69,19 +71,19 @@ fun GastosMesAnterior() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        HeaderTitle_MesAnterior()
+        HeaderTitle_MesAnterior(colorScheme)
         Spacer(modifier = Modifier.padding(20.dp))
-        InfoCajaChica()
+        InfoCajaChica(colorScheme)
         Spacer(modifier = Modifier.padding(20.dp))
         ListaGastos_MesAnterior()
     }
 }
 
 @Composable
-fun HeaderTitle_MesAnterior() {
+fun HeaderTitle_MesAnterior(colorScheme: ColorScheme) {
     Text(
         text = stringResource(id = R.string.gastos_del_mes_anterior_1),
-        color = LocalContentColor.current,
+        color = colorScheme.onPrimary,
         fontSize = 40.sp,
         fontWeight = FontWeight.Bold,
         textAlign = TextAlign.Center,
@@ -90,7 +92,7 @@ fun HeaderTitle_MesAnterior() {
 }
 
 @Composable
-fun InfoCajaChica() {
+fun InfoCajaChica(colorScheme: ColorScheme) {
     var gastoTotal = 0
     gastosMesAnterior.forEach {gastoAnterior ->
         gastoTotal  += gastoAnterior.gasto
@@ -107,19 +109,19 @@ fun InfoCajaChica() {
                 Text(
                     text = stringResource(id = R.string.gasto_total),
                     fontSize = 16.sp,
-                    color = LocalContentColor.current
+                    color = colorScheme.onPrimary
                 )
                 Text(
                     text = stringResource(id = R.string.del_mes_anterior),
                     fontSize = 16.sp,
-                    color = LocalContentColor.current
+                    color = colorScheme.onPrimary
                 )
             }
             Text(
                 text = stringResource(R.string.gasto_total_result, gastoTotal),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
-                color = LocalContentColor.current,
+                color = colorScheme.onPrimary,
                 modifier = Modifier.align(Alignment.Bottom)
             )
         }
@@ -133,19 +135,19 @@ fun InfoCajaChica() {
                 Text(
                     text = stringResource(id = R.string.caja_chica_1),
                     fontSize = 16.sp,
-                    color = LocalContentColor.current
+                    color = colorScheme.onPrimary
                 )
                 Text(
                     text = stringResource(id = R.string.asignada),
                     fontSize = 16.sp,
-                    color = LocalContentColor.current
+                    color = colorScheme.onPrimary
                 )
             }
             Text(
                 text = stringResource(R.string.caja_chica_result, cajaChica),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
-                color = LocalContentColor.current,
+                color = colorScheme.onPrimary,
                 modifier = Modifier.align(Alignment.Bottom)
             )
         }
@@ -164,18 +166,16 @@ fun ListaGastos_MesAnterior() {
 }
 
 @Composable
-fun ListItemRow(item: GastosMesAnterior) {
+fun ListItemRow(item: GastosMesAnterior, modifier: Modifier = Modifier) {
     val colorScheme = if (isSystemInDarkTheme()) {
         DarkColors
     } else {
         LightColors
     }
 
-    val gradient = Brush.linearGradient(
-        0.0f to colorScheme.primary,
-        1000.0f to colorScheme.primaryContainer,
-        start = Offset.Zero,
-        end = Offset.Infinite
+    Box(
+        modifier = modifier
+            .background(colorScheme.secondaryContainer), // Establece el color de fondo aquí
     )
 
     Card(
@@ -184,7 +184,7 @@ fun ListItemRow(item: GastosMesAnterior) {
             .padding(bottom = dimensionResource(R.dimen.padding_medium))
     ){
         Box(modifier = Modifier
-            .background(gradient)
+            .background(colorScheme.secondaryContainer)
             .padding(15.dp)
         ){
             Row(
@@ -199,12 +199,12 @@ fun ListItemRow(item: GastosMesAnterior) {
                         text = stringResource(R.string.numero_nro, item.numero),
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
-                        color = LocalContentColor.current
+                        color = colorScheme.onSecondaryContainer
                     )
                     Text(
                         text = item.nombre,
                         fontSize = 14.sp,
-                        color = LocalContentColor.current
+                        color = colorScheme.onSecondaryContainer
                     )
                 }
                 Column {
@@ -212,7 +212,7 @@ fun ListItemRow(item: GastosMesAnterior) {
                         text = stringResource(R.string.gasto_result, item.gasto),
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
-                        color = LocalContentColor.current,
+                        color = colorScheme.onTertiaryContainer,
                     )
                 }
             }

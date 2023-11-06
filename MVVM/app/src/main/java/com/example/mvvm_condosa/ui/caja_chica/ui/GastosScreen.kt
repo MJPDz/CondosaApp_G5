@@ -20,9 +20,11 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Card
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -81,16 +83,16 @@ fun Gastos() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        HeaderTitle_GastosCasa()
+        HeaderTitle_GastosCasa(colorScheme)
         Spacer(modifier = Modifier.padding(12.dp))
-        InfoGastoTotal()
+        InfoGastoTotal(colorScheme)
         Spacer(modifier = Modifier.padding(12.dp))
         ListaGastos_Casa()
     }
 }
 
 @Composable
-fun InfoGastoTotal() {
+fun InfoGastoTotal(colorScheme: ColorScheme) {
     var consumido = 0
     gastosCasa.forEach { gastosCasa ->
         consumido += gastosCasa.monto
@@ -104,23 +106,23 @@ fun InfoGastoTotal() {
         Text(
             text = stringResource(R.string.gasto_total_1),
             fontSize = 16.sp,
-            color = LocalContentColor.current
+            color = colorScheme.onPrimary
         )
         Text(
             text = stringResource(R.string.consumido_result, consumido),
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
-            color = LocalContentColor.current,
+            color = colorScheme.onPrimary,
             modifier = Modifier.align(Alignment.Bottom)
         )
     }
 }
 
 @Composable
-fun HeaderTitle_GastosCasa() {
+fun HeaderTitle_GastosCasa(colorScheme: ColorScheme) {
     Text(
         text = stringResource(R.string.gastos_de_caja_chica),
-        color = LocalContentColor.current,
+        color = colorScheme.onPrimary,
         fontSize = 40.sp,
         fontWeight = FontWeight.Bold,
         textAlign = TextAlign.Center,
@@ -140,18 +142,16 @@ fun ListaGastos_Casa() {
 }
 
 @Composable
-fun ListGastosRow(item: GastosCasa) {
+fun ListGastosRow(item: GastosCasa, modifier: Modifier = Modifier) {
     val colorScheme = if (isSystemInDarkTheme()) {
         DarkColors
     } else {
         LightColors
     }
 
-    val gradient = Brush.linearGradient(
-        0.0f to colorScheme.primary,
-        1000.0f to colorScheme.primaryContainer,
-        start = Offset.Zero,
-        end = Offset.Infinite
+    Box(
+        modifier = modifier
+            .background(colorScheme.secondaryContainer), // Establece el color de fondo aquí
     )
 
     var expanded by remember { mutableStateOf(false) }
@@ -162,7 +162,7 @@ fun ListGastosRow(item: GastosCasa) {
             .padding(bottom = dimensionResource(R.dimen.padding_medium))
     ){
         Box(modifier = Modifier
-            .background(gradient)
+            .background(colorScheme.tertiaryContainer)
             .padding(15.dp)
         ){
             Column (
@@ -186,17 +186,17 @@ fun ListGastosRow(item: GastosCasa) {
                             text = item.fecha,
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
-                            color = LocalContentColor.current
+                            color = colorScheme.onTertiaryContainer
                         )
                         Text(
                             text = item.nombre,
                             fontSize = 16.sp,
-                            color = LocalContentColor.current
+                            color = colorScheme.onTertiaryContainer
                         )
                         Text(
                             text = item.producto,
                             fontSize = 16.sp,
-                            color = LocalContentColor.current
+                            color = colorScheme.onTertiaryContainer
                         )
                     }
                     Column(
@@ -212,7 +212,7 @@ fun ListGastosRow(item: GastosCasa) {
                             text = stringResource(R.string.monto_result, item.monto),
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Bold,
-                            color = LocalContentColor.current
+                            color = colorScheme.onTertiaryContainer
                         )
                     }
                 }
@@ -239,7 +239,7 @@ private fun GastoItemButton(
         Icon(
             imageVector = if (expanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
             contentDescription = "Boton Expandir",
-            tint = LocalContentColor.current
+            tint = colorScheme.onTertiaryContainer
         )
     }
 }
@@ -250,16 +250,16 @@ fun GastoItemExtend() {
         text = stringResource(R.string.mas_info),
         fontSize = 18.sp,
         fontWeight = FontWeight.Bold,
-        color = Color.White
+        color = colorScheme.onPrimary
     )
     Text(
         text = stringResource(R.string.mas_info_1),
         fontSize = 16.sp,
-        color = LocalContentColor.current
+        color = colorScheme.onTertiaryContainer
     )
     Text(
         text = stringResource(R.string.mas_info_2),
         fontSize = 16.sp,
-        color = LocalContentColor.current
+        color = colorScheme.onTertiaryContainer
     )
 }
