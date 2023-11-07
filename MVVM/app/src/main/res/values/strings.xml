@@ -31,6 +31,8 @@
             <string name="mas_info">Mas info</string>
             <string name="mas_info_1">Mas info</string>
             <string name="mas_info_2">Mas info</string>
+            <string name="año">Año</string>
+            <string name="mes">Mes</string>
 
         // Registro Gastos Screen
             <string name="registro_de_gastos_1">Registro de Gastos</string>

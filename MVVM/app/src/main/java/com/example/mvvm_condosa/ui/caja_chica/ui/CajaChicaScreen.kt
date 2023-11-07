@@ -111,6 +111,7 @@ fun SelectedPredio(colorScheme : ColorScheme) {
     val list = listOf("Predio 1", "Predio 2", "Predio 3", "Predio 4", "Predio 5")
     var selectedItem by remember { mutableStateOf("") }
 
+
     var textFieldSize by remember { mutableStateOf(Size.Zero) }
 
     val icon = if (expanded) {
