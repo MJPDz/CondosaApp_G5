@@ -34,7 +34,11 @@
             <string name="año">Año</string>
             <string name="mes">Mes</string>
 
-        // Registro Gastos Screen
+        // Historial Caja Chica Screen
+            <string name="historial">Historial:</string>
+            <string name="anio">Año:</string>
+
+    // Registro Gastos Screen
             <string name="registro_de_gastos_1">Registro de Gastos</string>
             <string name="caja_chica_2">Caja chica</string>
             <string name="asignada_1">asignada:</string>

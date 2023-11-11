@@ -8,6 +8,7 @@ import com.example.mvvm_condosa.ui.caja_chica.ui.AnadirGastosScreen
 import com.example.mvvm_condosa.ui.caja_chica.ui.CajaChicaScreen
 import com.example.mvvm_condosa.ui.caja_chica.ui.GastosMesAnteriorScreen
 import com.example.mvvm_condosa.ui.caja_chica.ui.GastosScreen
+import com.example.mvvm_condosa.ui.caja_chica.ui.HistorialCajaChicaScreen
 import com.example.mvvm_condosa.ui.caja_chica.ui.RegistroGastosScreen
 import com.example.mvvm_condosa.ui.home.ui.HomeScreen
 import com.example.mvvm_condosa.ui.login.ui.LoginScreen
@@ -37,6 +38,9 @@ fun AppNavigation() {
         }
         composable(route = AppScreens.AnadirGastoScreen.route) {
             AnadirGastosScreen(navController)
+        }
+        composable(route = AppScreens.HistorialCajaChicaScreen.route) {
+            HistorialCajaChicaScreen(navController)
         }
     }
 }
