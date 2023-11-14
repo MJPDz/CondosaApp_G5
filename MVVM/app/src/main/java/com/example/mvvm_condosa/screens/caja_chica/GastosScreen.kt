@@ -1,4 +1,4 @@
-package com.example.mvvm_condosa.ui.caja_chica.ui
+package com.example.mvvm_condosa.screens.caja_chica
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Spring
@@ -26,7 +26,6 @@ import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -38,9 +37,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.LinearGradient
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.dimensionResource
@@ -50,29 +48,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.unit.toSize
 import com.example.mvvm_condosa.R
 import com.example.mvvm_condosa.data.GastosCasaSource.gastosCasa
 import com.example.mvvm_condosa.model.GastosCasa
 import com.example.mvvm_condosa.ui.theme.DarkColors
 import com.example.mvvm_condosa.ui.theme.LightColors
 
-@Preview
 @Composable
-fun GastosScreen() {
-    val colorScheme = if (isSystemInDarkTheme()) {
-        DarkColors
-    } else {
-        LightColors
-    }
-
-    val gradient = Brush.linearGradient(
-        0.0f to colorScheme.primary,
-        1000.0f to colorScheme.primaryContainer,
-        start = Offset.Zero,
-        end = Offset.Infinite
-    )
-
+fun GastosScreen(gradient: Brush) {
     Box(
         modifier = Modifier
             .background(gradient)

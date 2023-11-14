@@ -1,4 +1,4 @@
-package com.example.mvvm_condosa.ui.login.ui
+package com.example.mvvm_condosa.screens.login
 
 import com.example.mvvm_condosa.ui.theme.LightColors
 import com.example.mvvm_condosa.ui.theme.DarkColors
@@ -12,13 +12,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ColorScheme
-import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -27,12 +25,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.mvvm_condosa.R
 import androidx.compose.runtime.getValue
@@ -43,7 +39,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.navigation.NavController
-import com.example.mvvm_condosa.ui.navigation.AppScreens
+import com.example.mvvm_condosa.navigation.AppScreens
 import com.example.mvvm_condosa.ui.theme.MVVM_CondosaTheme
 
 @Composable
@@ -81,7 +77,6 @@ fun LoginScreen(navController: NavController) {
         }
     }
 }
-
 
 @Composable
 fun Login(modifier: Modifier, navController: NavController, colorScheme: ColorScheme) {
@@ -127,8 +122,6 @@ fun HeaderText(colorScheme: ColorScheme) {
         )
     }
 }
-
-
 
 @Composable
 fun LoginButton(navController: NavController, colorScheme: ColorScheme) {

@@ -1,4 +1,4 @@
-package com.example.mvvm_condosa.ui.caja_chica.ui
+package com.example.mvvm_condosa.screens.caja_chica
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -52,22 +52,12 @@ import com.example.mvvm_condosa.model.HistorialCajaChica
 import com.example.mvvm_condosa.ui.theme.DarkColors
 import com.example.mvvm_condosa.ui.theme.LightColors
 
-@Preview
+
 @Composable
-fun HistorialCajaChicaScreen(navController: NavHostController) {
-    val colorScheme = if (isSystemInDarkTheme()) {
-        DarkColors
-    } else {
-        LightColors
-    }
-
-    val gradient = Brush.linearGradient(
-        0.0f to colorScheme.primary,
-        1000.0f to colorScheme.primaryContainer,
-        start = Offset.Zero,
-        end = Offset.Infinite
-    )
-
+fun HistorialCajaChicaScreen(
+    navController: NavHostController,
+    gradient: Brush
+) {
     Box(
         modifier = Modifier
             .background(gradient)
@@ -88,9 +78,9 @@ fun GastosHistorial() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         HeaderTitle_Historial(colorScheme)
-        Spacer(modifier = Modifier.padding(20.dp))
+        Spacer(modifier = Modifier.padding(8.dp))
         SelectedAnio(colorScheme)
-        Spacer(modifier = Modifier.padding(20.dp))
+        Spacer(modifier = Modifier.padding(8.dp))
         ListaGastos_Historial()
     }
 }

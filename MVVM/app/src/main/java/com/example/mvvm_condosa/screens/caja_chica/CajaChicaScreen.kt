@@ -1,4 +1,4 @@
-package com.example.mvvm_condosa.ui.caja_chica.ui
+package com.example.mvvm_condosa.screens.caja_chica
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -23,7 +23,6 @@ import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
-import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -37,36 +36,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
 import androidx.navigation.NavController
 import com.example.mvvm_condosa.R
-import com.example.mvvm_condosa.ui.navigation.AppScreens
+import com.example.mvvm_condosa.navigation.AppScreens
 import com.example.mvvm_condosa.ui.theme.DarkColors
 import com.example.mvvm_condosa.ui.theme.LightColors
 
 @Composable
-fun CajaChicaScreen(navController: NavController) {
-    val colorScheme = if (isSystemInDarkTheme()) {
-        DarkColors
-    } else {
-        LightColors
-    }
-
-    val gradient = Brush.linearGradient(
-        0.0f to colorScheme.primary,
-        1000.0f to colorScheme.primaryContainer,
-        start = Offset.Zero,
-        end = Offset.Infinite
-    )
-
+fun CajaChicaScreen(
+    navController: NavController,
+    gradient: Brush
+) {
     Box(
         modifier = Modifier
             .background(gradient)
@@ -169,18 +156,17 @@ fun SelectedPredio(colorScheme : ColorScheme) {
     }
 }
 
-
 @Composable
 fun OptionsCaja(navController: NavController, colorScheme : ColorScheme) {
     Button(
-        onClick = { navController.navigate(route = AppScreens.GastosMesAnteriorScreen.route) },
+        onClick = { navController.navigate(route = AppScreens.AsignacionCajaChicaSreen.route) },
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp),
         colors = ButtonDefaults.buttonColors(colorScheme.secondaryContainer)
     ) {
         Text(
-            text = stringResource(id = R.string.gastos_del_mes_anterior),
+            text = "Asignación de caja chica",
             fontSize = 20.sp,
             color = colorScheme.onSecondaryContainer
         )

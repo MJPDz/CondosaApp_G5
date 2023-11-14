@@ -1,4 +1,4 @@
-package com.example.mvvm_condosa.ui.navigation
+package com.example.mvvm_condosa.navigation
 
 sealed class AppScreens(val route: String) {
     object LoginScreen: AppScreens("login_screen")
@@ -10,4 +10,5 @@ sealed class AppScreens(val route: String) {
     object GastosScreen: AppScreens("gastos_screen")
     object HistorialCajaChicaScreen: AppScreens("historial_caja_chica_screen")
 
+    object AsignacionCajaChicaSreen: AppScreens("asignacion_caja_chica_screen")
 }

@@ -1,4 +1,4 @@
-package com.example.mvvm_condosa.ui.caja_chica.ui
+package com.example.mvvm_condosa.screens.caja_chica
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -14,7 +14,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.ColorScheme
-import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,7 +21,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -36,22 +34,8 @@ import com.example.mvvm_condosa.model.GastosMesAnterior
 import com.example.mvvm_condosa.ui.theme.DarkColors
 import com.example.mvvm_condosa.ui.theme.LightColors
 
-@Preview
 @Composable
-fun GastosMesAnteriorScreen() {
-    val colorScheme = if (isSystemInDarkTheme()) {
-        DarkColors
-    } else {
-        LightColors
-    }
-
-    val gradient = Brush.linearGradient(
-        0.0f to colorScheme.primary,
-        1000.0f to colorScheme.primaryContainer,
-        start = Offset.Zero,
-        end = Offset.Infinite
-    )
-
+fun GastosMesAnteriorScreen(gradient: Brush) {
     Box(
         modifier = Modifier
             .background(gradient)
@@ -73,8 +57,6 @@ fun GastosMesAnterior() {
     ) {
         HeaderTitle_MesAnterior(colorScheme)
         Spacer(modifier = Modifier.padding(20.dp))
-        InfoCajaChica(colorScheme)
-        Spacer(modifier = Modifier.padding(20.dp))
         ListaGastos_MesAnterior()
     }
 }
@@ -89,69 +71,6 @@ fun HeaderTitle_MesAnterior(colorScheme: ColorScheme) {
         textAlign = TextAlign.Center,
         lineHeight = 36.sp
     )
-}
-
-@Composable
-fun InfoCajaChica(colorScheme: ColorScheme) {
-    var gastoTotal = 0
-    gastosMesAnterior.forEach {gastoAnterior ->
-        gastoTotal  += gastoAnterior.gasto
-    }
-    var cajaChica = (gastoTotal*0.25).toInt()
-
-    Column(Modifier.fillMaxWidth()) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Column {
-                Text(
-                    text = stringResource(id = R.string.gasto_total),
-                    fontSize = 16.sp,
-                    color = colorScheme.onPrimary
-                )
-                Text(
-                    text = stringResource(id = R.string.del_mes_anterior),
-                    fontSize = 16.sp,
-                    color = colorScheme.onPrimary
-                )
-            }
-            Text(
-                text = stringResource(R.string.gasto_total_result, gastoTotal),
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold,
-                color = colorScheme.onPrimary,
-                modifier = Modifier.align(Alignment.Bottom)
-            )
-        }
-        Spacer(modifier = Modifier.padding(8.dp))
-        Row(
-            modifier = Modifier
-                .fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Column {
-                Text(
-                    text = stringResource(id = R.string.caja_chica_1),
-                    fontSize = 16.sp,
-                    color = colorScheme.onPrimary
-                )
-                Text(
-                    text = stringResource(id = R.string.asignada),
-                    fontSize = 16.sp,
-                    color = colorScheme.onPrimary
-                )
-            }
-            Text(
-                text = stringResource(R.string.caja_chica_result, cajaChica),
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold,
-                color = colorScheme.onPrimary,
-                modifier = Modifier.align(Alignment.Bottom)
-            )
-        }
-    }
 }
 
 @Composable

@@ -1,4 +1,4 @@
-package com.example.mvvm_condosa.ui.caja_chica.ui
+package com.example.mvvm_condosa.screens.caja_chica
 
 import android.app.DatePickerDialog
 import android.icu.util.Calendar
@@ -23,7 +23,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.Icon
-import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -38,7 +37,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -48,26 +46,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.mvvm_condosa.R
-import com.example.mvvm_condosa.ui.navigation.AppScreens
+import com.example.mvvm_condosa.navigation.AppScreens
 import com.example.mvvm_condosa.ui.theme.DarkColors
 import com.example.mvvm_condosa.ui.theme.LightColors
 
 
 @Composable
-fun AnadirGastosScreen(navController: NavController) {
-    val colorScheme = if (isSystemInDarkTheme()) {
-        DarkColors
-    } else {
-        LightColors
-    }
-
-    val gradient = Brush.linearGradient(
-        0.0f to colorScheme.primary,
-        1000.0f to colorScheme.primaryContainer,
-        start = Offset.Zero,
-        end = Offset.Infinite
-    )
-
+fun AnadirGastosScreen(
+    navController: NavController,
+    gradient: Brush
+) {
     Box(
         modifier = Modifier
             .background(gradient)
