@@ -50,7 +50,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.mvvm_condosa.R
 import com.example.mvvm_condosa.data.GastosCasaSource.gastosCasa
-import com.example.mvvm_condosa.model.GastosCasa
+import com.example.mvvm_condosa.data.model.GastosCasa
 import com.example.mvvm_condosa.ui.theme.DarkColors
 import com.example.mvvm_condosa.ui.theme.LightColors
 

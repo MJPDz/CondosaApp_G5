@@ -1,4 +1,4 @@
-package com.example.mvvm_condosa.model
+package com.example.mvvm_condosa.data.model
 import androidx.annotation.StringRes
 
 data class HistorialCajaChica(

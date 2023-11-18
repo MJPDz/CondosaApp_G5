@@ -1,6 +1,6 @@
 package com.example.mvvm_condosa.data
 
-import com.example.mvvm_condosa.model.HistorialCajaChica
+import com.example.mvvm_condosa.data.model.HistorialCajaChica
 
 object HistorialCajaChicaSource{
     val historialCajaChica = listOf(

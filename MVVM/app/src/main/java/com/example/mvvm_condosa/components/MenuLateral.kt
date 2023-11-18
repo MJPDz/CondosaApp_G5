@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.mvvm_condosa.R
-import com.example.mvvm_condosa.model.Items_menu_lateral.*
+import com.example.mvvm_condosa.data.model.Items_menu_lateral.*
 import com.example.mvvm_condosa.navigation.currentRoute
 import kotlinx.coroutines.launch
 

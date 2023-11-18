@@ -1,4 +1,4 @@
-package com.example.mvvm_condosa.model
+package com.example.mvvm_condosa.data.model
 
 data class GastosCasa(
     val fecha: String,

@@ -9,7 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
-import com.example.mvvm_condosa.model.Items_bottom_nav.*
+import com.example.mvvm_condosa.data.model.Items_bottom_nav.*
 import com.example.mvvm_condosa.navigation.currentRoute
 
 @Composable

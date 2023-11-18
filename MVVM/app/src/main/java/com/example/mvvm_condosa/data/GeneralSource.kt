@@ -1,7 +1,7 @@
 package com.example.mvvm_condosa.data
 
 import com.example.mvvm_condosa.R
-import com.example.mvvm_condosa.model.Meses
+import com.example.mvvm_condosa.data.model.Meses
 
 object GeneralSource {
     val meses = listOf(

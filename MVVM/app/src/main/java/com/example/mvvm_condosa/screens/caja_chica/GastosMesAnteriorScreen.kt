@@ -30,7 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.mvvm_condosa.R
 import com.example.mvvm_condosa.data.GastosMesAnteriorSource.gastosMesAnterior
-import com.example.mvvm_condosa.model.GastosMesAnterior
+import com.example.mvvm_condosa.data.model.GastosMesAnterior
 import com.example.mvvm_condosa.ui.theme.DarkColors
 import com.example.mvvm_condosa.ui.theme.LightColors
 

@@ -72,4 +72,10 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.7.4")
     // Iconos extendidos
     implementation("androidx.compose.material:material-icons-extended:1.5.4")
+
+    implementation ("org.jetbrains.exposed:exposed-core:0.43.0")
+    implementation ("org.jetbrains.exposed:exposed-dao:0.43.0")
+    implementation ("org.jetbrains.exposed:exposed-jdbc:0.43.0")
+    implementation ("org.jetbrains.exposed:exposed-java-time:0.43.0")
+    implementation("org.postgresql:postgresql:42.2.4")
 }

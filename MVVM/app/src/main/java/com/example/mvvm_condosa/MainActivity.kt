@@ -27,6 +27,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.mvvm_condosa.components.MenuLateral
 import com.example.mvvm_condosa.components.NavegacionInferior
 import com.example.mvvm_condosa.components.TopBar
+import com.example.mvvm_condosa.data.Config.db
 import com.example.mvvm_condosa.navigation.AppNavigation
 import com.example.mvvm_condosa.navigation.currentRoute
 import com.example.mvvm_condosa.screens.MainScreen
@@ -35,6 +36,7 @@ import com.example.mvvm_condosa.ui.theme.MVVM_CondosaTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        db.init()
         setContent {
             MVVM_CondosaTheme {
                 Surface(

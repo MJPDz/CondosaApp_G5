@@ -45,6 +45,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
 import androidx.navigation.NavController
 import com.example.mvvm_condosa.R
+import com.example.mvvm_condosa.data.DAO.PredioDAO
 import com.example.mvvm_condosa.navigation.AppScreens
 import com.example.mvvm_condosa.ui.theme.DarkColors
 import com.example.mvvm_condosa.ui.theme.LightColors
@@ -66,6 +67,7 @@ fun CajaChicaScreen(
 
 @Composable
 fun CajaChica(navController: NavController) {
+    val PredioDAO = PredioDAO()
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -76,7 +78,7 @@ fun CajaChica(navController: NavController) {
     ) {
         HeaderTitle(colorScheme)
         Spacer(modifier = Modifier.padding(40.dp))
-        SelectedPredio(colorScheme)
+        SelectedPredio(colorScheme, PredioDAO)
         Spacer(modifier = Modifier.padding(80.dp))
         OptionsCaja(navController, colorScheme)
     }
@@ -93,13 +95,15 @@ fun HeaderTitle(colorScheme : ColorScheme) {
 }
 
 @Composable
-fun SelectedPredio(colorScheme : ColorScheme) {
+fun SelectedPredio(colorScheme : ColorScheme, predioDAO: PredioDAO) {
     var expanded by remember { mutableStateOf(false) }
-    val list = listOf("Predio 1", "Predio 2", "Predio 3", "Predio 4", "Predio 5")
     var selectedItem by remember { mutableStateOf("") }
 
-
     var textFieldSize by remember { mutableStateOf(Size.Zero) }
+    var prediosList by remember { mutableStateOf(emptyList<String>()) }
+
+    // Obtener la lista de descripciones de predios desde el DAO
+    prediosList = predioDAO.obtenerPrediosSinRepetir()
 
     val icon = if (expanded) {
         Icons.Default.KeyboardArrowUp
@@ -138,7 +142,7 @@ fun SelectedPredio(colorScheme : ColorScheme) {
             modifier = Modifier
                 .width(with(LocalDensity.current) { textFieldSize.width.toDp() })
         ) {
-            list.forEach { label ->
+            prediosList.forEach { label ->
                 DropdownMenuItem(
                     text = {
                         Text(
@@ -155,6 +159,7 @@ fun SelectedPredio(colorScheme : ColorScheme) {
         }
     }
 }
+
 
 @Composable
 fun OptionsCaja(navController: NavController, colorScheme : ColorScheme) {

@@ -1,6 +1,6 @@
 package com.example.mvvm_condosa.data
 
-import com.example.mvvm_condosa.model.GastosCasa
+import com.example.mvvm_condosa.data.model.GastosCasa
 
 object GastosCasaSource {
     val gastosCasa = listOf(

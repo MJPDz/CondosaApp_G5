@@ -48,7 +48,7 @@ import androidx.compose.ui.unit.toSize
 import androidx.navigation.NavHostController
 import com.example.mvvm_condosa.R
 import com.example.mvvm_condosa.data.HistorialCajaChicaSource.historialCajaChica
-import com.example.mvvm_condosa.model.HistorialCajaChica
+import com.example.mvvm_condosa.data.model.HistorialCajaChica
 import com.example.mvvm_condosa.ui.theme.DarkColors
 import com.example.mvvm_condosa.ui.theme.LightColors
 
