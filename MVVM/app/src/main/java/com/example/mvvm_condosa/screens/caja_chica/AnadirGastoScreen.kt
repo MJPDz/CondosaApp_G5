@@ -160,7 +160,7 @@ fun CampoTexto() {
         value = inquilino,
         onValueChange = { inquilino = it },
         modifier = Modifier.fillMaxWidth(),
-        placeholder = { Text(text = "Ingrese Inquilino") },
+        placeholder = { Text(text = stringResource(R.string.ingrese_inquilino)) },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
         singleLine = true,
         maxLines = 1
@@ -170,7 +170,7 @@ fun CampoTexto() {
         value = producto,
         onValueChange = { producto = it },
         modifier = Modifier.fillMaxWidth(),
-        placeholder = { Text(text = "Ingrese Producto") },
+        placeholder = { Text(text = stringResource(R.string.ingrese_producto)) },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
         singleLine = true,
         maxLines = 1
@@ -184,7 +184,7 @@ fun CampoDinero() {
         value = cantidad,
         onValueChange = { cantidad = it },
         modifier = Modifier.fillMaxWidth(),
-        placeholder = { Text(text = "Ingrese monto") },
+        placeholder = { Text(text = stringResource(R.string.ingrese_monto)) },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         singleLine = true,
         maxLines = 1

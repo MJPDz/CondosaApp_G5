@@ -18,11 +18,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.mvvm_condosa.MainViewModel
+import com.example.mvvm_condosa.R
 import com.example.mvvm_condosa.components.MenuLateral
 import com.example.mvvm_condosa.components.NavegacionInferior
 import com.example.mvvm_condosa.components.TopBar
@@ -111,16 +113,16 @@ fun ContentBottomSheet() {
             .height(280.dp)
             .padding(horizontal = 28.dp)
     ) {
-        Text(text = "Proyecto Condosa")
-        Text(text = "Trabajo del curso de Desarrollo de Sistemas Móviles 2023-2")
-        Text(text = "Integrantes G5:")
-        Text(text = "Anchahua Flores, Maricielo")
-        Text(text = "Barrenechea, Balya Agnes")
-        Text(text = "Portugal De la Cruz, Marko Joel")
-        Text(text = "Urbano Quispe, Adrian Rodrigo")
-        Text(text = "Docente:")
-        Text(text = "Mamani Rodriguez, Zoraida Emperatriz")
-        Text(text = "Escuela profesional de Ingeniería de Sistemas")
-        Text(text = "FISI-UNMSM")
+        Text(text = stringResource(R.string.proyecto_condosa))
+        Text(text = stringResource(R.string.trabajo_del_curso_de_desarrollo_de_sistemas_m_viles_2023_2))
+        Text(text = stringResource(R.string.integrantes_g5))
+        Text(text = stringResource(R.string.anchahua_flores_maricielo))
+        Text(text = stringResource(R.string.barrenechea_benites_balya_agnes))
+        Text(text = stringResource(R.string.portugal_de_la_cruz_marko_joel))
+        Text(text = stringResource(R.string.urbano_quispe_adrian_rodrigo))
+        Text(text = stringResource(R.string.docente))
+        Text(text = stringResource(R.string.mamani_rodriguez_zoraida_emperatriz))
+        Text(text = stringResource(R.string.escuela_profesional_de_ingenier_a_de_sistemas))
+        Text(text = stringResource(R.string.fisi_unmsm))
     }
 }

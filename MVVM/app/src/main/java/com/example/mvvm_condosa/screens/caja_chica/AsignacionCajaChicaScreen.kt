@@ -102,7 +102,7 @@ fun DialogoAsignacion(mainViewModel: MainViewModel, colorScheme: ColorScheme) {
            )
         },
         title = {
-            Text(text = "Asignar Caja Chica")
+            Text(text = stringResource(R.string.asignar_caja_chica))
         },
         text = {
            Column {
@@ -112,7 +112,7 @@ fun DialogoAsignacion(mainViewModel: MainViewModel, colorScheme: ColorScheme) {
                    value = cantidad,
                    onValueChange = {cantidad = it},
                    placeholder = {
-                       Text(text = "Ingresar monto")
+                       Text(text = stringResource(R.string.ingresar_monto))
                    },
                    keyboardOptions = KeyboardOptions(
                        keyboardType = KeyboardType.Number
@@ -126,7 +126,7 @@ fun DialogoAsignacion(mainViewModel: MainViewModel, colorScheme: ColorScheme) {
                        checked = acepto,
                        onCheckedChange = {acepto = it}
                    )
-                   Text(text = "Cuento con el permiso necesario")
+                   Text(text = stringResource(R.string.cuento_con_el_permiso_necesario))
                }
            }
         },
@@ -137,14 +137,14 @@ fun DialogoAsignacion(mainViewModel: MainViewModel, colorScheme: ColorScheme) {
             TextButton(
                 onClick = { mainViewModel.showDialogAsignacion = false }
             ) {
-                Text(text = "Registrar")
+                Text(text = stringResource(R.string.registrar))
             }
         },
         dismissButton = {
             TextButton(
                 onClick = { mainViewModel.showDialogAsignacion = false }
             ) {
-                Text(text = "Cancelar")
+                Text(text = stringResource(R.string.cancelar))
             }
         }
     )
@@ -160,7 +160,7 @@ fun OptionsAsignacion(navController: NavController, colorScheme: ColorScheme) {
         colors = ButtonDefaults.buttonColors(colorScheme.secondaryContainer)
     ) {
         Text(
-            text = "Ver historial de caja chica",
+            text = stringResource(R.string.ver_historial_de_caja_chica),
             fontSize = 20.sp,
             color = colorScheme.onSecondaryContainer
         )
@@ -174,7 +174,7 @@ fun OptionsAsignacion(navController: NavController, colorScheme: ColorScheme) {
         colors = ButtonDefaults.buttonColors(colorScheme.secondaryContainer)
     ) {
         Text(
-            text = "Ver gastos del mes anterior",
+            text = stringResource(R.string.ver_gastos_del_mes_anterior),
             fontSize = 20.sp,
             color = colorScheme.onSecondaryContainer
         )
@@ -201,13 +201,13 @@ fun CardCajaChica(colorScheme: ColorScheme) {
             ) {
                 Column {
                     Text(
-                        text = "Caja chica:",
+                        text = stringResource(R.string.caja_chica_3),
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Normal,
                         color = colorScheme.onTertiaryContainer
                     )
                     Text(
-                        text = "S/ 1500.00",
+                        text = stringResource(R.string.s_1500_00),
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Bold,
                         color = colorScheme.onTertiaryContainer
@@ -230,7 +230,7 @@ fun ModificarCajaChica(colorScheme: ColorScheme) {
         colors = ButtonDefaults.buttonColors(colorScheme.secondaryContainer)
     ) {
         Text(
-            text = "Modificar",
+            text = stringResource(R.string.modificar),
             fontSize = 14.sp,
             color = colorScheme.onSecondaryContainer
         )
@@ -245,12 +245,12 @@ fun Sugerencia(colorScheme: ColorScheme) {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
-            text = "Monto sugerido:",
+            text = stringResource(R.string.monto_sugerido),
             fontSize = 16.sp,
             color = colorScheme.onPrimary
         )
         Text(
-            text = "S/ 900.00",
+            text = stringResource(R.string.s_900_00),
             fontSize = 16.sp,
             color = colorScheme.onPrimary
         )
@@ -260,7 +260,7 @@ fun Sugerencia(colorScheme: ColorScheme) {
 @Composable
 fun HeaderAsignacion(colorScheme: ColorScheme) {
     Text(
-        text = "Asignacion de caja chica",
+        text = stringResource(R.string.asignacion_de_caja_chica),
         color = colorScheme.onPrimary ,
         fontSize = 40.sp,
         fontWeight = FontWeight.Bold,

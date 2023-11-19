@@ -4,13 +4,35 @@
         // Añadir Gasto Screen
             <string name="añadir_nuevo_gasto">Añadir nuevo gasto</string>
             <string name="selecciona_fecha">Selecciona Fecha</string>
+            <string name="ingrese_inquilino">Ingrese Inquilino</string>
+            <string name="ingrese_producto">Ingrese Producto</string>
+            <string name="ingrese_monto">Ingrese monto</string>
             <string name="registrar_gasto">Registrar gasto</string>
+
+        // Asignación Caja Chica Screen
+            <string name="asignar_caja_chica">Asignar Caja Chica</string>
+            <string name="ingresar_monto">Ingresar monto</string>
+            <string name="cuento_con_el_permiso_necesario">Cuento con el permiso necesario</string>
+            <string name="registrar">Registrar</string>
+            <string name="cancelar">Cancelar</string>
+            <string name="ver_historial_de_caja_chica">Ver historial de caja chica</string>
+            <string name="ver_gastos_del_mes_anterior">Ver gastos del mes anterior</string>
+            <string name="caja_chica_3">Caja chica:</string>
+            <string name="s_1500_00">S/ 1500.00</string>
+            <string name="modificar">Modificar</string>
+            <string name="monto_sugerido">Monto sugerido:</string>
+            <string name="s_900_00">S/ 900.00</string>
+            <string name="asignacion_de_caja_chica">Asignacion de caja chica</string>
 
         // Caja Chica Screen
             <string name="caja_chica">Caja Chica</string>
             <string name="selecciona_un_predio">Selecciona un predio</string>
             <string name="gastos_del_mes_anterior">Gastos del mes anterior</string>
             <string name="registro_de_gastos">Registro de gastos</string>
+            <string name="asignaci_n_de_caja_chica">Asignación de caja chica</string>
+            <string name="caja_chica_4">Caja chica</string>
+            <string name="debes_seleccionar_un_predio">Debes seleccionar un predio</string>
+            <string name="cerrar">Cerrar</string>
 
         // Gastos Mes Anterior Screen
             <string name="gastos_del_mes_anterior_1">Gastos del mes anterior</string>
@@ -84,6 +106,19 @@
             <string name="iniciar_sesion">Iniciar Sesión</string>
             <string name="olvidaste_tu_contrasena">¿Olvidaste tu contraseña?</string>
 
+        // Main Screen
+            <string name="proyecto_condosa">Proyecto Condosa</string>
+            <string name="trabajo_del_curso_de_desarrollo_de_sistemas_m_viles_2023_2">Trabajo del curso de Desarrollo de Sistemas Móviles 2023-2</string>
+            <string name="integrantes_g5">Integrantes G5:</string>
+            <string name="anchahua_flores_maricielo">Anchahua Flores, Maricielo</string>
+            <string name="barrenechea_benites_balya_agnes">Barrenechea Benites, Balya Agnes</string>
+            <string name="portugal_de_la_cruz_marko_joel">Portugal De la Cruz, Marko Joel</string>
+            <string name="urbano_quispe_adrian_rodrigo">Urbano Quispe, Adrian Rodrigo</string>
+            <string name="docente">Docente:</string>
+            <string name="mamani_rodriguez_zoraida_emperatriz">Mamani Rodriguez, Zoraida Emperatriz</string>
+            <string name="escuela_profesional_de_ingenier_a_de_sistemas">Escuela profesional de Ingeniería de Sistemas</string>
+            <string name="fisi_unmsm">FISI-UNMSM</string>
+
     // Settings UI
 
         // Settings Screen
@@ -92,5 +127,7 @@
     <string name="app_name">MVVM_Condosa</string>
     <string name="home">Home</string>
     <string name="account">Account</string>
+
+
 
 </resources>

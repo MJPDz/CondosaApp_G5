@@ -198,7 +198,7 @@ fun OptionsCaja(
         colors = ButtonDefaults.buttonColors(colorScheme.secondaryContainer)
     ) {
         Text(
-            text = "Asignación de caja chica",
+            text = stringResource(R.string.asignaci_n_de_caja_chica),
             fontSize = 20.sp,
             color = colorScheme.onSecondaryContainer
         )
@@ -236,10 +236,10 @@ fun DialogoCajaChica(mainViewModel: MainViewModel, colorScheme: ColorScheme) {
             )
         },
         title = {
-            Text(text = "Caja chica")
+            Text(text = stringResource(R.string.caja_chica_4))
         },
         text = {
-            Text(text = "Debes seleccionar un predio")
+            Text(text = stringResource(R.string.debes_seleccionar_un_predio))
         },
         onDismissRequest = {
             mainViewModel.showDialogCajaChica = false
@@ -248,7 +248,7 @@ fun DialogoCajaChica(mainViewModel: MainViewModel, colorScheme: ColorScheme) {
             TextButton(
                 onClick = { mainViewModel.showDialogCajaChica = false }
             ) {
-                Text(text = "Cerrar")
+                Text(text = stringResource(R.string.cerrar))
             }
         }
     )
