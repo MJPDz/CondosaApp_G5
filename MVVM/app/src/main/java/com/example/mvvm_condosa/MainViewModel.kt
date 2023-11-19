@@ -8,4 +8,5 @@ import androidx.lifecycle.ViewModel
 class MainViewModel: ViewModel() {
     var showBottomSheet by mutableStateOf(false)
     var showDialogAsignacion by mutableStateOf(false)
+    var showDialogCajaChica by mutableStateOf(false)
 }

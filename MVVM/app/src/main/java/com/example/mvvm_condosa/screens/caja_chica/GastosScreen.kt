@@ -201,8 +201,6 @@ fun FiltrarGastosAnioYMes(colorScheme: ColorScheme) {
     }
 }
 
-
-
 @Composable
 fun HeaderTitle_GastosCasa(colorScheme: ColorScheme) {
     Text(
