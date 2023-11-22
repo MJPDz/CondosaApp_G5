@@ -60,7 +60,6 @@ import com.example.mvvm_condosa.R
 import com.example.mvvm_condosa.data.DAO.PredioDAO
 import com.example.mvvm_condosa.navigation.AppScreens
 
-
 @Composable
 fun CajaChicaScreen(
     navController: NavController,
@@ -81,9 +80,8 @@ fun CajaChica(navController: NavController) {
     val PredioDAO = PredioDAO()
     var selectedId by remember { mutableStateOf(0) }
     var predioselect = 0
-    /*SelectedPredio(colorScheme, PredioDAO) {
-        selectedId = it // Cuando se selecciona un predio, actualiza el ID
-    }*/
+    val mainViewModel: MainViewModel = viewModel()
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -99,9 +97,11 @@ fun CajaChica(navController: NavController) {
         }
         Spacer(modifier = Modifier.padding(80.dp))
         OptionsCaja(navController, colorScheme, selectedId)
+        if(mainViewModel.showDialogCajaChica){
+            DialogoCajaChica(mainViewModel, colorScheme)
+        }
     }
 }
-
 
 @Composable
 fun HeaderTitle(colorScheme : ColorScheme) {
@@ -228,4 +228,33 @@ fun OptionsCaja(
             color = colorScheme.onSecondaryContainer
         )
     }
+}
+
+
+@Composable
+fun DialogoCajaChica(mainViewModel: MainViewModel, colorScheme: ColorScheme) {
+    AlertDialog(
+        icon = {
+            Icon(
+                imageVector = Icons.Default.ErrorOutline,
+                contentDescription = null
+            )
+        },
+        title = {
+            Text(text = "Caja chica")
+        },
+        text = {
+            Text(text = "Debes seleccionar un predio")
+        },
+        onDismissRequest = {
+            mainViewModel.showDialogCajaChica = false
+        },
+        confirmButton = {
+            TextButton(
+                onClick = { mainViewModel.showDialogCajaChica = false }
+            ) {
+                Text(text = "Cerrar")
+            }
+        }
+    )
 }

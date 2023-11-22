@@ -81,7 +81,7 @@ class RegistroDAO {
                     .slice(GastosDetTable.importe, GastoTable.descripcion)
                     .select {
                         (GastosDetTable.id_predio_gastos eq idPredioGasto) and
-                        (GastoTable.id_tipo_gasto eq 8)
+                        (GastoTable.id_tipo_gasto eq obtenerIdTipoGasto()[0])
                     }
                     .map { row ->
                         row[GastosDetTable.importe] to row[GastoTable.descripcion]
@@ -114,5 +114,3 @@ class RegistroDAO {
             return caja?.first ?: 0
     }
 }
-
-// predio = 1 id_predio_gastos = 579

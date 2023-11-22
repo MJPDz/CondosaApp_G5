@@ -20,7 +20,6 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
-import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme.colorScheme
@@ -47,7 +46,6 @@ import androidx.navigation.NavController
 import com.example.mvvm_condosa.MainViewModel
 import com.example.mvvm_condosa.R
 import com.example.mvvm_condosa.data.DAO.AsignarDAO
-import com.example.mvvm_condosa.data.DAO.PredioDAO
 import com.example.mvvm_condosa.navigation.AppScreens
 
 @Composable
@@ -90,13 +88,20 @@ fun AsignacionCajaChica(
         Spacer(modifier = Modifier.padding(40.dp))
         OptionsAsignacion(navController, colorScheme)
         if(mainViewModel.showDialogAsignacion){
-            DialogoAsignacion(mainViewModel, colorScheme)
+            if (id != null) {
+                DialogoAsignacion(mainViewModel, colorScheme,id, navController)
+            }
         }
     }
 }
 
 @Composable
-fun DialogoAsignacion(mainViewModel: MainViewModel, colorScheme: ColorScheme) {
+fun DialogoAsignacion(
+    mainViewModel: MainViewModel,
+    colorScheme: ColorScheme,
+    id: Int,
+    navController: NavController
+) {
     var cantidad by remember { mutableStateOf("") }
     AlertDialog(
         icon = {
@@ -130,8 +135,11 @@ fun DialogoAsignacion(mainViewModel: MainViewModel, colorScheme: ColorScheme) {
         confirmButton = { 
             TextButton(
                 onClick = {
-
-                    mainViewModel.showDialogAsignacion = false }
+                    val nuevoMonto = cantidad.toDoubleOrNull() ?: 0.0
+                    val asignar=AsignarDAO().updateCaja(id,nuevoMonto)
+                    mainViewModel.showDialogAsignacion = false
+                    navController.popBackStack()
+                }
             ) {
                 Text(text = stringResource(R.string.registrar))
             }

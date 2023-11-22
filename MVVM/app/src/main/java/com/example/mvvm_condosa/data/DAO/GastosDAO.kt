@@ -52,7 +52,8 @@ class GastosDAO {
                     PredioTable.descripcion
                 )
                 .select {
-                    (GastosDetTable.id_predio_gastos eq idPredioGasto)
+                    (GastosDetTable.id_predio_gastos eq idPredioGasto) and
+                    (GastoTable.id_tipo_gasto eq 8)
                 }
                 .map {
                     GastosConDetalles(
