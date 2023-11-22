@@ -53,8 +53,12 @@ fun AppNavigation(
         ) {
             RegistroGastosScreen(navController, gradient, it.arguments?.getInt("id"))
         }
-        composable(route = AppScreens.GastosScreen.route) {
-            GastosScreen(gradient)
+        composable(route = AppScreens.GastosScreen.route + "/{id}",
+            arguments = listOf(navArgument(name = "id") {
+                type = NavType.IntType
+            })
+        ) {
+            GastosScreen(gradient, it.arguments?.getInt("id"))
         }
         composable(route = AppScreens.AnadirGastoScreen.route) {
             AnadirGastosScreen(navController, gradient)

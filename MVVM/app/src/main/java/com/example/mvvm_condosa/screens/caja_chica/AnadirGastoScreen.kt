@@ -4,7 +4,6 @@ import android.app.DatePickerDialog
 import android.icu.util.Calendar
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -35,7 +34,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -47,8 +45,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.mvvm_condosa.R
 import com.example.mvvm_condosa.navigation.AppScreens
-import com.example.mvvm_condosa.ui.theme.DarkColors
-import com.example.mvvm_condosa.ui.theme.LightColors
 
 
 @Composable
@@ -78,9 +74,7 @@ fun AnadirGastos(navController: NavController) {
     ) {
         HeaderTitle_Anadir(colorScheme)
         Spacer(modifier = Modifier.padding(20.dp))
-        Formulario_Anadir()
-        Spacer(modifier = Modifier.padding(20.dp))
-        ButtonAnadir(navController)
+        Formulario_Anadir(navController)
     }
 }
 
@@ -97,18 +91,7 @@ fun HeaderTitle_Anadir(colorScheme: ColorScheme) {
 }
 
 @Composable
-fun Formulario_Anadir() {
-    CampoFecha()
-    Spacer(modifier = Modifier.padding(8.dp))
-    CampoTexto()
-    Spacer(modifier = Modifier.padding(8.dp))
-    CampoDinero()
-}
-
-
-
-@Composable
-fun CampoFecha() {
+fun Formulario_Anadir(navController: NavController) {
     var fecha by rememberSaveable { mutableStateOf("") }
     val anio: Int
     val mes: Int
@@ -150,35 +133,22 @@ fun CampoFecha() {
 
         }
     }
-}
 
-@Composable
-fun CampoTexto() {
-    var inquilino by remember { mutableStateOf("") }
-    var producto by remember { mutableStateOf("") }
-    TextField(
-        value = inquilino,
-        onValueChange = { inquilino = it },
-        modifier = Modifier.fillMaxWidth(),
-        placeholder = { Text(text = stringResource(R.string.ingrese_inquilino)) },
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-        singleLine = true,
-        maxLines = 1
-    )
     Spacer(modifier = Modifier.padding(8.dp))
+
+    var descripcionGasto by remember { mutableStateOf("") }
     TextField(
-        value = producto,
-        onValueChange = { producto = it },
+        value = descripcionGasto,
+        onValueChange = { descripcionGasto = it },
         modifier = Modifier.fillMaxWidth(),
         placeholder = { Text(text = stringResource(R.string.ingrese_producto)) },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
         singleLine = true,
         maxLines = 1
     )
-}
 
-@Composable
-fun CampoDinero() {
+    Spacer(modifier = Modifier.padding(8.dp))
+
     var cantidad by remember { mutableStateOf("") }
     TextField(
         value = cantidad,
@@ -189,6 +159,10 @@ fun CampoDinero() {
         singleLine = true,
         maxLines = 1
     )
+
+
+    Spacer(modifier = Modifier.padding(20.dp))
+    ButtonAnadir(navController)
 }
 
 @Composable

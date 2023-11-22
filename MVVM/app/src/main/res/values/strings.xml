@@ -50,7 +50,7 @@
             <string name="consumido_result">S/ %1$s.00</string>
             <string name="gastos_de_caja_chica">Gastos de caja chica</string>
             <string name="monto_result">S/ %1$s.00</string>
-            <string name="mas_info">Mas info</string>
+            <string name="mas_info">Mas información</string>
             <string name="mas_info_1">Mas info</string>
             <string name="mas_info_2">Mas info</string>
             <string name="año">Año</string>
@@ -64,11 +64,11 @@
             <string name="registro_de_gastos_1">Registro de Gastos</string>
             <string name="caja_chica_2">Caja chica</string>
             <string name="asignada_1">asignada:</string>
-            <string name="caja_chica_result_1">S/ %1$s.00</string>
+            <string name="caja_chica_result_1">S/ %1$s</string>
             <string name="consumido">Consumido:</string>
-            <string name="consumido_result_1">S/ %1$s.00</string>
+            <string name="consumido_result_1">S/ %1$s</string>
             <string name="restante">Restante:</string>
-            <string name="restante_result">S/ %1$s.00</string>
+            <string name="restante_result">S/ %1$s</string>
             <string name="registrar_nuevo_gasto">Registrar nuevo gasto</string>
             <string name="ver_gastos">Ver gastos</string>
 

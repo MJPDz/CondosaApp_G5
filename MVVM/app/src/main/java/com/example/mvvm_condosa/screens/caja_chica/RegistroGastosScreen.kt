@@ -31,8 +31,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.mvvm_condosa.R
-import com.example.mvvm_condosa.data.GastosCasaSource.gastosCasa
-import com.example.mvvm_condosa.data.GastosMesAnteriorSource.gastosMesAnterior
 import com.example.mvvm_condosa.navigation.AppScreens
 
 
@@ -67,18 +65,18 @@ fun RegistroGastos(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        HeaderTitle_Registro(colorScheme, id)
+        HeaderTitle_Registro(colorScheme)
         Spacer(modifier = Modifier.padding(20.dp))
         if (id != null) {
             InfoRegistros(colorScheme,id)
         }
         Spacer(modifier = Modifier.padding(20.dp))
-        OptionsRegistro(navController, colorScheme)
+        OptionsRegistro(navController, colorScheme, id)
     }
 }
 
 @Composable
-fun HeaderTitle_Registro(colorScheme: ColorScheme, id: Int?) {
+fun HeaderTitle_Registro(colorScheme: ColorScheme) {
     Text(
         text = stringResource(R.string.registro_de_gastos_1),
         color = colorScheme.onPrimary,
@@ -87,23 +85,14 @@ fun HeaderTitle_Registro(colorScheme: ColorScheme, id: Int?) {
         textAlign = TextAlign.Center,
         lineHeight = 40.sp
     )
-    id?.let {
-        Text(text = it.toString())
-    }
 }
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun InfoRegistros(colorScheme: ColorScheme, predio : Int) {
-    val importeAsociado = RegistroDAO().calcularCajachica(predio)
-
-    var cajaChica = importeAsociado
-
-
-    var consumido = 0
-    gastosCasa.forEach { gastosCasa ->
-        consumido += gastosCasa.monto
-    }
+    var cajaChica = RegistroDAO().obtenerCajachica(predio)
+    var idCajaChica = RegistroDAO().obtenerIdCajachica(predio)
+    var consumido = RegistroDAO().calcularConsumo(predio)
     var restante = cajaChica - consumido
 
     Column(Modifier.fillMaxWidth()) {
@@ -176,7 +165,11 @@ fun InfoRegistros(colorScheme: ColorScheme, predio : Int) {
 }
 
 @Composable
-fun OptionsRegistro(navController: NavController, colorScheme: ColorScheme) {
+fun OptionsRegistro(
+    navController: NavController,
+    colorScheme: ColorScheme,
+    id: Int?
+) {
     Button(
         onClick = { navController.navigate(route = AppScreens.AnadirGastoScreen.route) },
         modifier = Modifier
@@ -192,7 +185,7 @@ fun OptionsRegistro(navController: NavController, colorScheme: ColorScheme) {
     }
     Spacer(modifier = Modifier.padding(8.dp))
     Button(
-        onClick = { navController.navigate(route = AppScreens.GastosScreen.route) },
+        onClick = { navController.navigate(route = AppScreens.GastosScreen.route +"/${id}") },
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp),

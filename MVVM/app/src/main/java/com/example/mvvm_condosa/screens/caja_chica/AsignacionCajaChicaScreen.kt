@@ -179,7 +179,7 @@ fun OptionsAsignacion(navController: NavController, colorScheme: ColorScheme) {
 
 @Composable
 fun CardCajaChica(colorScheme: ColorScheme, idpredio: Int) {
-    val importecaja = RegistroDAO().calcularCajachica(idpredio)
+    val importeCaja = RegistroDAO().obtenerCajachica(idpredio)
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -204,7 +204,7 @@ fun CardCajaChica(colorScheme: ColorScheme, idpredio: Int) {
                         color = colorScheme.onTertiaryContainer
                     )
                     Text(
-                        text = importecaja.toString(),
+                        text = "S/ ${importeCaja}",
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Bold,
                         color = colorScheme.onTertiaryContainer
@@ -236,7 +236,7 @@ fun ModificarCajaChica(colorScheme: ColorScheme) {
 
 @Composable
 fun Sugerencia(colorScheme: ColorScheme,idpredio: Int) {
-    val sugerencia2 = AsignarDAO().calcular(idpredio)
+    val sugerencia = AsignarDAO().calcular(idpredio)
     Row(
         modifier = Modifier
             .fillMaxWidth(),
@@ -248,7 +248,7 @@ fun Sugerencia(colorScheme: ColorScheme,idpredio: Int) {
             color = colorScheme.onPrimary
         )
         Text(
-            text = sugerencia2.toString(),
+            text = "S/ ${sugerencia}",
             fontSize = 16.sp,
             color = colorScheme.onPrimary
         )

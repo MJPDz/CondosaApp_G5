@@ -36,37 +36,39 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.LinearGradient
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.mvvm_condosa.R
-import com.example.mvvm_condosa.data.GastosCasaSource.gastosCasa
-import com.example.mvvm_condosa.data.model.GastosCasa
+import com.example.mvvm_condosa.data.DAO.GastosDAO
+import com.example.mvvm_condosa.data.model.GastosConDetalles
 import com.example.mvvm_condosa.ui.theme.DarkColors
 import com.example.mvvm_condosa.ui.theme.LightColors
 
 @Composable
-fun GastosScreen(gradient: Brush) {
+fun GastosScreen(
+    gradient: Brush,
+    id: Int?
+) {
     Box(
         modifier = Modifier
             .background(gradient)
             .fillMaxSize()
     ) {
-        Gastos()
+        if (id != null) {
+            Gastos(id)
+        }
     }
 }
 
 @Composable
-fun Gastos() {
+fun Gastos(id: Int) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -77,7 +79,7 @@ fun Gastos() {
         HeaderTitle_GastosCasa(colorScheme)
         FiltrarGastosAnioYMes(colorScheme)
         Spacer(modifier = Modifier.padding(12.dp))
-        ListaGastos_Casa()
+        ListaGastos_Casa(id)
     }
 }
 
@@ -214,18 +216,23 @@ fun HeaderTitle_GastosCasa(colorScheme: ColorScheme) {
 }
 
 @Composable
-fun ListaGastos_Casa() {
+fun ListaGastos_Casa(id: Int) {
+    var gastos = GastosDAO().obtenerGastosConDetalles(id)
+
     LazyColumn(
         modifier = Modifier.fillMaxWidth()
     ) {
-        items(gastosCasa) { item ->
+        items(gastos) { item ->
             ListGastosRow(item)
         }
     }
 }
 
 @Composable
-fun ListGastosRow(item: GastosCasa, modifier: Modifier = Modifier) {
+fun ListGastosRow(
+    item: GastosConDetalles,
+    modifier: Modifier = Modifier
+) {
     val colorScheme = if (isSystemInDarkTheme()) {
         DarkColors
     } else {
@@ -266,19 +273,9 @@ fun ListGastosRow(item: GastosCasa, modifier: Modifier = Modifier) {
                 ) {
                     Column {
                         Text(
-                            text = item.fecha,
+                            text = item.periodo.toString(),
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
-                            color = colorScheme.onTertiaryContainer
-                        )
-                        Text(
-                            text = item.nombre,
-                            fontSize = 16.sp,
-                            color = colorScheme.onTertiaryContainer
-                        )
-                        Text(
-                            text = item.producto,
-                            fontSize = 16.sp,
                             color = colorScheme.onTertiaryContainer
                         )
                     }
@@ -292,7 +289,7 @@ fun ListGastosRow(item: GastosCasa, modifier: Modifier = Modifier) {
                             onClick = { expanded = !expanded }
                         )
                         Text(
-                            text = stringResource(R.string.monto_result, item.monto),
+                            text = "S/ ${item.importe}",
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Bold,
                             color = colorScheme.onTertiaryContainer
@@ -300,7 +297,7 @@ fun ListGastosRow(item: GastosCasa, modifier: Modifier = Modifier) {
                     }
                 }
                 if (expanded) {
-                    GastoItemExtend()
+                    GastoItemExtend(item)
                 }
             }
         }
@@ -326,7 +323,8 @@ private fun GastoItemButton(
 }
 
 @Composable
-fun GastoItemExtend() {
+fun GastoItemExtend(item: GastosConDetalles) {
+    Spacer(modifier = Modifier.padding(8.dp))
     Text(
         text = stringResource(R.string.mas_info),
         fontSize = 18.sp,
@@ -334,12 +332,17 @@ fun GastoItemExtend() {
         color = colorScheme.onPrimary
     )
     Text(
-        text = stringResource(R.string.mas_info_1),
+        text = "Predio: ${item.predio}",
         fontSize = 16.sp,
         color = colorScheme.onTertiaryContainer
     )
     Text(
-        text = stringResource(R.string.mas_info_2),
+        text = "Descripción: ${item.descripcion}",
+        fontSize = 16.sp,
+        color = colorScheme.onTertiaryContainer
+    )
+    Text(
+        text = "Personal: ${item.nombres}",
         fontSize = 16.sp,
         color = colorScheme.onTertiaryContainer
     )
