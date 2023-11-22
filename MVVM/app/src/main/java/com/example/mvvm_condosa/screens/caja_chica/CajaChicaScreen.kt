@@ -53,10 +53,13 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
 import com.example.mvvm_condosa.MainViewModel
 import com.example.mvvm_condosa.R
 import com.example.mvvm_condosa.data.DAO.PredioDAO
 import com.example.mvvm_condosa.navigation.AppScreens
+
 
 @Composable
 fun CajaChicaScreen(
@@ -76,7 +79,11 @@ fun CajaChicaScreen(
 @Composable
 fun CajaChica(navController: NavController) {
     val PredioDAO = PredioDAO()
-    val mainViewModel: MainViewModel = viewModel()
+    var selectedId by remember { mutableStateOf(0) }
+    var predioselect = 0
+    /*SelectedPredio(colorScheme, PredioDAO) {
+        selectedId = it // Cuando se selecciona un predio, actualiza el ID
+    }*/
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -87,12 +94,14 @@ fun CajaChica(navController: NavController) {
     ) {
         HeaderTitle(colorScheme)
         Spacer(modifier = Modifier.padding(40.dp))
-        SelectedPredio(colorScheme, PredioDAO, navController)
-        if(mainViewModel.showDialogCajaChica){
-            DialogoCajaChica(mainViewModel, colorScheme)
+        SelectedPredio(colorScheme, PredioDAO) { id ->
+            selectedId = id
         }
+        Spacer(modifier = Modifier.padding(80.dp))
+        OptionsCaja(navController, colorScheme, selectedId)
     }
 }
+
 
 @Composable
 fun HeaderTitle(colorScheme : ColorScheme) {
@@ -105,18 +114,14 @@ fun HeaderTitle(colorScheme : ColorScheme) {
 }
 
 @Composable
-fun SelectedPredio(
-    colorScheme : ColorScheme,
-    predioDAO: PredioDAO,
-    navController: NavController
-) {
+fun SelectedPredio(colorScheme: ColorScheme, predioDAO: PredioDAO, onPredioSelected: (Int) -> Unit) {
     var expanded by remember { mutableStateOf(false) }
-    var selectedItem by remember { mutableStateOf("") }
+    var selectedPair by remember { mutableStateOf<Pair<Int, String>?>(null) }
 
     var textFieldSize by remember { mutableStateOf(Size.Zero) }
-    var prediosList by remember { mutableStateOf(emptyList<String>()) }
+    var prediosList by remember { mutableStateOf(emptyList<Pair<Int, String>>()) }
 
-    // Obtener la lista de descripciones de predios desde el DAO
+    // Obtener la lista de pares (id_predio, descripcion) desde el DAO
     prediosList = predioDAO.obtenerPrediosSinRepetir()
 
     val icon = if (expanded) {
@@ -127,8 +132,8 @@ fun SelectedPredio(
 
     Column(modifier = Modifier.padding(20.dp)) {
         OutlinedTextField(
-            value = selectedItem,
-            onValueChange = { newItem -> selectedItem = newItem },
+            value = selectedPair?.second ?: "",
+            onValueChange = { /* No permitir cambios directos en el campo de texto */ },
             modifier = Modifier
                 .fillMaxWidth()
                 .onGloballyPositioned { coordinates ->
@@ -156,39 +161,37 @@ fun SelectedPredio(
             modifier = Modifier
                 .width(with(LocalDensity.current) { textFieldSize.width.toDp() })
         ) {
-            prediosList.forEach { label ->
+            prediosList.forEach { (id, descripcion) ->
                 DropdownMenuItem(
                     text = {
                         Text(
-                            text = label,
+                            text = descripcion,
                             fontWeight = FontWeight.Bold
                         )
                     },
                     onClick = {
-                        selectedItem = label
+                        selectedPair = Pair(id, descripcion)
                         expanded = false
+                        onPredioSelected(id) // Llamamos a la función de retorno con el ID seleccionado
                     }
                 )
             }
         }
     }
-    Spacer(modifier = Modifier.padding(80.dp))
-    OptionsCaja(navController, colorScheme, selectedItem)
 }
 
 @Composable
 fun OptionsCaja(
     navController: NavController,
     colorScheme: ColorScheme,
-    selectedItem: String
+    selectedId: Int
 ) {
     val mainViewModel: MainViewModel = viewModel()
     Button(
         onClick = {
-            if(selectedItem !== ""){
-                navController.navigate(AppScreens.AsignacionCajaChicaSreen.route)
-            }
-            else {
+            if (selectedId != 0) {
+                navController.navigate(AppScreens.AsignacionCajaChicaSreen.route +"/${selectedId}")
+            } else {
                 mainViewModel.showDialogCajaChica = true
             }
         },
@@ -203,13 +206,14 @@ fun OptionsCaja(
             color = colorScheme.onSecondaryContainer
         )
     }
+
     Spacer(modifier = Modifier.padding(8.dp))
+
     Button(
         onClick = {
-            if(selectedItem !== ""){
-                navController.navigate(AppScreens.RegistroGastosScreen.route)
-            }
-            else {
+            if (selectedId != 0) {
+                navController.navigate(AppScreens.RegistroGastosScreen.route +"/${selectedId}")
+            } else {
                 mainViewModel.showDialogCajaChica = true
             }
         },
@@ -224,32 +228,4 @@ fun OptionsCaja(
             color = colorScheme.onSecondaryContainer
         )
     }
-}
-
-@Composable
-fun DialogoCajaChica(mainViewModel: MainViewModel, colorScheme: ColorScheme) {
-    AlertDialog(
-        icon = {
-            Icon(
-                imageVector = Icons.Default.ErrorOutline,
-                contentDescription = null
-            )
-        },
-        title = {
-            Text(text = stringResource(R.string.caja_chica_4))
-        },
-        text = {
-            Text(text = stringResource(R.string.debes_seleccionar_un_predio))
-        },
-        onDismissRequest = {
-            mainViewModel.showDialogCajaChica = false
-        },
-        confirmButton = {
-            TextButton(
-                onClick = { mainViewModel.showDialogCajaChica = false }
-            ) {
-                Text(text = stringResource(R.string.cerrar))
-            }
-        }
-    )
 }

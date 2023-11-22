@@ -7,13 +7,12 @@ import org.jetbrains.exposed.sql.transactions.transaction
 import com.example.mvvm_condosa.data.Entity.PredioEntity
 
 class PredioDAO {
-    fun obtenerPrediosSinRepetir(): List<String> = runBlocking {
+    fun obtenerPrediosSinRepetir(): List<Pair<Int, String>> = runBlocking {
         return@runBlocking withContext(Dispatchers.IO) {
             transaction {
-                return@transaction PredioEntity.all().distinctBy { it.descripcion }.map { it.descripcion }
+                return@transaction PredioEntity.all().distinctBy { it.descripcion }
+                    .map { it.id.value to it.descripcion }
             }
         }
     }
-
-    // Otros métodos según sea necesario
 }

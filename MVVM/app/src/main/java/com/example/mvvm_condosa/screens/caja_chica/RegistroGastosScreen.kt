@@ -1,7 +1,6 @@
 package com.example.mvvm_condosa.screens.caja_chica
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,7 +20,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -33,14 +31,13 @@ import com.example.mvvm_condosa.R
 import com.example.mvvm_condosa.data.GastosCasaSource.gastosCasa
 import com.example.mvvm_condosa.data.GastosMesAnteriorSource.gastosMesAnterior
 import com.example.mvvm_condosa.navigation.AppScreens
-import com.example.mvvm_condosa.ui.theme.DarkColors
-import com.example.mvvm_condosa.ui.theme.LightColors
 
 
 @Composable
 fun RegistroGastosScreen(
     navController: NavController,
-    gradient: Brush
+    gradient: Brush,
+    id: Int?
 ) {
     Box(
         modifier = Modifier
@@ -48,12 +45,15 @@ fun RegistroGastosScreen(
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        RegistroGastos(navController)
+        RegistroGastos(navController, id)
     }
 }
 
 @Composable
-fun RegistroGastos(navController: NavController) {
+fun RegistroGastos(
+    navController: NavController,
+    id: Int?
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -62,7 +62,7 @@ fun RegistroGastos(navController: NavController) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        HeaderTitle_Registro(colorScheme)
+        HeaderTitle_Registro(colorScheme, id)
         Spacer(modifier = Modifier.padding(20.dp))
         InfoRegistros(colorScheme)
         Spacer(modifier = Modifier.padding(20.dp))
@@ -71,7 +71,7 @@ fun RegistroGastos(navController: NavController) {
 }
 
 @Composable
-fun HeaderTitle_Registro(colorScheme: ColorScheme) {
+fun HeaderTitle_Registro(colorScheme: ColorScheme, id: Int?) {
     Text(
         text = stringResource(R.string.registro_de_gastos_1),
         color = colorScheme.onPrimary,
@@ -80,6 +80,9 @@ fun HeaderTitle_Registro(colorScheme: ColorScheme) {
         textAlign = TextAlign.Center,
         lineHeight = 40.sp
     )
+    id?.let {
+        Text(text = it.toString())
+    }
 }
 
 @Composable

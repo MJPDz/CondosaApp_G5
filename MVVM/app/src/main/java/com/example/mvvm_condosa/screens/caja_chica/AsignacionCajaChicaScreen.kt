@@ -1,8 +1,5 @@
 package com.example.mvvm_condosa.screens.caja_chica
 
-import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -53,7 +50,8 @@ import com.example.mvvm_condosa.navigation.AppScreens
 @Composable
 fun AsignacionCajaChicaScreen(
     navController: NavController,
-    gradient: Brush
+    gradient: Brush,
+    id: Int?
 ) {
     Box(
         modifier = Modifier
@@ -61,12 +59,15 @@ fun AsignacionCajaChicaScreen(
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        AsignacionCajaChica(navController)
+        AsignacionCajaChica(navController, id)
     }
 }
 
 @Composable
-fun AsignacionCajaChica(navController: NavController) {
+fun AsignacionCajaChica(
+    navController: NavController,
+    id: Int?
+) {
     val mainViewModel: MainViewModel = viewModel()
     Column(
         modifier = Modifier
@@ -76,7 +77,7 @@ fun AsignacionCajaChica(navController: NavController) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        HeaderAsignacion(colorScheme)
+        HeaderAsignacion(colorScheme, id)
         Spacer(modifier = Modifier.padding(40.dp))
         Sugerencia(colorScheme)
         Spacer(modifier = Modifier.padding(20.dp))
@@ -258,7 +259,7 @@ fun Sugerencia(colorScheme: ColorScheme) {
 }
 
 @Composable
-fun HeaderAsignacion(colorScheme: ColorScheme) {
+fun HeaderAsignacion(colorScheme: ColorScheme, id: Int?) {
     Text(
         text = stringResource(R.string.asignacion_de_caja_chica),
         color = colorScheme.onPrimary ,
@@ -266,6 +267,9 @@ fun HeaderAsignacion(colorScheme: ColorScheme) {
         fontWeight = FontWeight.Bold,
         textAlign = TextAlign.Center
     )
+    id?.let {
+        Text(text = it.toString())
+    }
 }
 
 

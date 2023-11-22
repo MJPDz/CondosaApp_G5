@@ -4,9 +4,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Brush
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.mvvm_condosa.screens.caja_chica.AnadirGastosScreen
 import com.example.mvvm_condosa.screens.caja_chica.AsignacionCajaChicaScreen
 import com.example.mvvm_condosa.screens.caja_chica.CajaChicaScreen
@@ -41,8 +43,12 @@ fun AppNavigation(
         composable(route = AppScreens.HistorialCajaChicaScreen.route) {
             HistorialCajaChicaScreen(navController, gradient)
         }
-        composable(route = AppScreens.RegistroGastosScreen.route) {
-            RegistroGastosScreen(navController, gradient)
+        composable(route = AppScreens.RegistroGastosScreen.route + "/{id}",
+            arguments = listOf(navArgument(name = "id") {
+                type = NavType.IntType
+            })
+        ) {
+            RegistroGastosScreen(navController, gradient, it.arguments?.getInt("id"))
         }
         composable(route = AppScreens.GastosScreen.route) {
             GastosScreen(gradient)
@@ -51,8 +57,12 @@ fun AppNavigation(
             AnadirGastosScreen(navController, gradient)
         }
 
-        composable(route = AppScreens.AsignacionCajaChicaSreen.route) {
-            AsignacionCajaChicaScreen(navController, gradient)
+        composable(route = AppScreens.AsignacionCajaChicaSreen.route + "/{id}",
+            arguments = listOf(navArgument(name = "id") {
+                type = NavType.IntType
+            })
+        ) {
+            AsignacionCajaChicaScreen(navController, gradient, it.arguments?.getInt("id"))
         }
     }
 }
