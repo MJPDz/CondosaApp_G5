@@ -1,5 +1,6 @@
 package com.example.mvvm_condosa.screens.caja_chica
 
+import RegistroDAO
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -45,6 +46,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.mvvm_condosa.MainViewModel
 import com.example.mvvm_condosa.R
+import com.example.mvvm_condosa.data.DAO.AsignarDAO
+import com.example.mvvm_condosa.data.DAO.PredioDAO
 import com.example.mvvm_condosa.navigation.AppScreens
 
 @Composable
@@ -79,9 +82,11 @@ fun AsignacionCajaChica(
     ) {
         HeaderAsignacion(colorScheme, id)
         Spacer(modifier = Modifier.padding(40.dp))
-        Sugerencia(colorScheme)
+        Sugerencia(colorScheme, id?:0)
         Spacer(modifier = Modifier.padding(20.dp))
-        CardCajaChica(colorScheme)
+        if (id != null) {
+            CardCajaChica(colorScheme,id)
+        }
         Spacer(modifier = Modifier.padding(40.dp))
         OptionsAsignacion(navController, colorScheme)
         if(mainViewModel.showDialogAsignacion){
@@ -93,8 +98,6 @@ fun AsignacionCajaChica(
 @Composable
 fun DialogoAsignacion(mainViewModel: MainViewModel, colorScheme: ColorScheme) {
     var cantidad by remember { mutableStateOf("") }
-    var acepto by remember { mutableStateOf(false) }
-
     AlertDialog(
         icon = {
            Icon(
@@ -119,16 +122,6 @@ fun DialogoAsignacion(mainViewModel: MainViewModel, colorScheme: ColorScheme) {
                        keyboardType = KeyboardType.Number
                    )
                )
-               Spacer(modifier = Modifier.padding(8.dp))
-               Row(
-                   verticalAlignment = Alignment.CenterVertically
-               ) {
-                   Checkbox(
-                       checked = acepto,
-                       onCheckedChange = {acepto = it}
-                   )
-                   Text(text = stringResource(R.string.cuento_con_el_permiso_necesario))
-               }
            }
         },
         onDismissRequest = {
@@ -136,7 +129,9 @@ fun DialogoAsignacion(mainViewModel: MainViewModel, colorScheme: ColorScheme) {
         },
         confirmButton = { 
             TextButton(
-                onClick = { mainViewModel.showDialogAsignacion = false }
+                onClick = {
+
+                    mainViewModel.showDialogAsignacion = false }
             ) {
                 Text(text = stringResource(R.string.registrar))
             }
@@ -183,7 +178,8 @@ fun OptionsAsignacion(navController: NavController, colorScheme: ColorScheme) {
 }
 
 @Composable
-fun CardCajaChica(colorScheme: ColorScheme) {
+fun CardCajaChica(colorScheme: ColorScheme, idpredio: Int) {
+    val importecaja = RegistroDAO().calcularCajachica(idpredio)
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -208,7 +204,7 @@ fun CardCajaChica(colorScheme: ColorScheme) {
                         color = colorScheme.onTertiaryContainer
                     )
                     Text(
-                        text = stringResource(R.string.s_1500_00),
+                        text = importecaja.toString(),
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Bold,
                         color = colorScheme.onTertiaryContainer
@@ -239,7 +235,8 @@ fun ModificarCajaChica(colorScheme: ColorScheme) {
 }
 
 @Composable
-fun Sugerencia(colorScheme: ColorScheme) {
+fun Sugerencia(colorScheme: ColorScheme,idpredio: Int) {
+    val sugerencia2 = AsignarDAO().calcular(idpredio)
     Row(
         modifier = Modifier
             .fillMaxWidth(),
@@ -251,7 +248,7 @@ fun Sugerencia(colorScheme: ColorScheme) {
             color = colorScheme.onPrimary
         )
         Text(
-            text = stringResource(R.string.s_900_00),
+            text = sugerencia2.toString(),
             fontSize = 16.sp,
             color = colorScheme.onPrimary
         )

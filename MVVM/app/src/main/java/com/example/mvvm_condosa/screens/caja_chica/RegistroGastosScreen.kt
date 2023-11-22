@@ -1,5 +1,8 @@
 package com.example.mvvm_condosa.screens.caja_chica
 
+import RegistroDAO
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -33,6 +36,7 @@ import com.example.mvvm_condosa.data.GastosMesAnteriorSource.gastosMesAnterior
 import com.example.mvvm_condosa.navigation.AppScreens
 
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun RegistroGastosScreen(
     navController: NavController,
@@ -49,6 +53,7 @@ fun RegistroGastosScreen(
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun RegistroGastos(
     navController: NavController,
@@ -64,7 +69,9 @@ fun RegistroGastos(
     ) {
         HeaderTitle_Registro(colorScheme, id)
         Spacer(modifier = Modifier.padding(20.dp))
-        InfoRegistros(colorScheme)
+        if (id != null) {
+            InfoRegistros(colorScheme,id)
+        }
         Spacer(modifier = Modifier.padding(20.dp))
         OptionsRegistro(navController, colorScheme)
     }
@@ -85,13 +92,13 @@ fun HeaderTitle_Registro(colorScheme: ColorScheme, id: Int?) {
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun InfoRegistros(colorScheme: ColorScheme) {
-    var gastoTotal = 0
-    gastosMesAnterior.forEach { gastoAnterior ->
-        gastoTotal  += gastoAnterior.gasto
-    }
-    var cajaChica = (gastoTotal*0.25).toInt()
+fun InfoRegistros(colorScheme: ColorScheme, predio : Int) {
+    val importeAsociado = RegistroDAO().calcularCajachica(predio)
+
+    var cajaChica = importeAsociado
+
 
     var consumido = 0
     gastosCasa.forEach { gastosCasa ->

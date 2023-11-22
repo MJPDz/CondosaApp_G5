@@ -1,5 +1,7 @@
 package com.example.mvvm_condosa.navigation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Brush
 import androidx.navigation.NavController
@@ -19,6 +21,7 @@ import com.example.mvvm_condosa.screens.caja_chica.RegistroGastosScreen
 import com.example.mvvm_condosa.screens.home.HomeScreen
 import com.example.mvvm_condosa.screens.login.LoginScreen
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun AppNavigation(
     navController: NavHostController,
