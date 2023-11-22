@@ -2,6 +2,7 @@ package com.example.mvvm_condosa.data.model
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AttachMoney
+import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Money
 import androidx.compose.material.icons.filled.Settings
@@ -24,8 +25,9 @@ sealed class Items_bottom_nav(
         AppScreens.CajaChicaScreen.route
     )
     object Item_bottom_nav3: Items_bottom_nav(
-        Icons.Default.Settings,
-        "Opciones",
-        "" // Ruta vacía - No redirige
+        Icons.Default.ExitToApp,
+        "Salir",
+        AppScreens.LoginScreen.route
+        
     )
 }
